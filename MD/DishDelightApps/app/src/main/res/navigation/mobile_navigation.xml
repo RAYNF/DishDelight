@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.dishdelight.ui.splashscreen.ui.SplashFragment"
+        android:name="com.example.dishdelight.ui.splashs.ui.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
