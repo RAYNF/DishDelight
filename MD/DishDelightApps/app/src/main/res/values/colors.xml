@@ -5,6 +5,7 @@
     <color name="Accent">#101010</color>
     <color name="Muted">#878787</color>
     <color name="Danger">#D93A3A</color>
+    <color name="Background">#D9D9D9</color>
 
 
     <color name="purple_200">#FFBB86FC</color>
