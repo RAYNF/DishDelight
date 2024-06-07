@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/boardingimg"
+    android:background="@drawable/image_boarding"
     tools:context=".ui.welcoming.WelcomingActivity">
 
     <LinearLayout
@@ -18,7 +18,7 @@
         <ImageView
             android:layout_width="26dp"
             android:layout_height="22dp"
-            android:src="@drawable/starimg" />
+            android:src="@drawable/image_icon_star" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
         android:id="@+id/btn_mulai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/backgorund_button_shape"
         android:padding="20dp"
         android:text="Mulai Memasak"
         android:textSize="14sp"
