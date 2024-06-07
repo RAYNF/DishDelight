@@ -84,66 +84,66 @@
 
        <!-- search view sementara pakai ini    -->
 
-       <LinearLayout
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:background="@drawable/background_search"
-           android:gravity="center_vertical"
-           android:orientation="horizontal"
-           app:layout_constraintEnd_toEndOf="@id/guideline7"
-           app:layout_constraintStart_toStartOf="@id/guideline3"
-           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9">
+<!--       <LinearLayout-->
+<!--           android:layout_width="0dp"-->
+<!--           android:layout_height="wrap_content"-->
+<!--           android:background="@drawable/background_search"-->
+<!--           android:gravity="center_vertical"-->
+<!--           android:orientation="horizontal"-->
+<!--           app:layout_constraintEnd_toEndOf="@id/guideline7"-->
+<!--           app:layout_constraintStart_toStartOf="@id/guideline3"-->
+<!--           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9">-->
 
-           <ImageButton
-               android:id="@+id/btn_search"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@android:color/transparent"
-               android:padding="8dp"
-               android:src="@drawable/ic_search" />
+<!--           <ImageButton-->
+<!--               android:id="@+id/btn_search"-->
+<!--               android:layout_width="wrap_content"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:background="@android:color/transparent"-->
+<!--               android:padding="8dp"-->
+<!--               android:src="@drawable/ic_search" />-->
 
-           <EditText
-               android:id="@+id/searchEditText"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:background="@android:color/transparent"
-               android:focusable="true"
-               android:hint="@string/searchbar_hint"
-               android:paddingStart="8dp"
-               android:paddingEnd="8dp"
-               android:textColorHint="@color/Muted"
-               android:textSize="14sp" />
+<!--           <EditText-->
+<!--               android:id="@+id/searchEditText"-->
+<!--               android:layout_width="0dp"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_weight="1"-->
+<!--               android:background="@android:color/transparent"-->
+<!--               android:focusable="true"-->
+<!--               android:hint="@string/searchbar_hint"-->
+<!--               android:paddingStart="8dp"-->
+<!--               android:paddingEnd="8dp"-->
+<!--               android:textColorHint="@color/Muted"-->
+<!--               android:textSize="14sp" />-->
 
 
-       </LinearLayout>
+<!--       </LinearLayout>-->
        <!-- batas akhir search view   -->
 
-       <!--  search view seharus nya cuman masih error  -->
+         search view seharus nya cuman masih error
 
-       <!--    <com.google.android.material.search.SearchBar-->
-       <!--        android:id="@+id/searchBar"-->
-       <!--        android:layout_width="0dp"-->
-       <!--        android:layout_height="wrap_content"-->
-       <!--        android:layout_marginHorizontal="16dp"-->
-       <!--        android:layout_marginTop="16dp"-->
-       <!--        android:hint="@string/searchbar_hint"-->
-       <!--        app:layout_constraintEnd_toEndOf="parent"-->
-       <!--        app:layout_constraintStart_toStartOf="parent"-->
-       <!--        app:layout_constraintTop_toTopOf="parent">-->
-       <!--    </com.google.android.material.search.SearchBar>-->
+           <com.google.android.material.search.SearchBar
+               android:id="@+id/searchBar"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginHorizontal="16dp"
+               android:layout_marginTop="16dp"
+               android:hint="@string/searchbar_hint"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
+           </com.google.android.material.search.SearchBar>
 
-       <!--    <com.google.android.material.search.SearchView-->
-       <!--        android:id="@+id/searchView"-->
-       <!--        android:layout_width="0dp"-->
-       <!--        android:layout_height="0dp"-->
-       <!--        android:hint="@string/searchbar_hint"-->
-       <!--        app:layout_anchor="@id/searchBar"-->
-       <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-       <!--        app:layout_constraintEnd_toEndOf="parent"-->
-       <!--        app:layout_constraintStart_toStartOf="parent"-->
-       <!--        app:layout_constraintTop_toTopOf="parent">-->
-       <!--    </com.google.android.material.search.SearchView>-->
+           <com.google.android.material.search.SearchView
+               android:id="@+id/searchView"
+               android:layout_width="0dp"
+               android:layout_height="0dp"
+               android:hint="@string/searchbar_hint"
+               app:layout_anchor="@id/searchBar"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
+           </com.google.android.material.search.SearchView>
 
        <!--  batas search view seharus nya cuman masih error  -->
 
