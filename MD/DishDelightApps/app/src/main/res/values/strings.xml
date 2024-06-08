@@ -42,4 +42,37 @@
         <item>Dinner</item>
     </string-array>
 
+    <string-array name="foodName">
+        <item>Grilled Chicken</item>
+        <item>Sandwich</item>
+        <item>Spaghetti</item>
+        <item>Ramen</item>
+        <item>Burrito</item>
+        <item>Croissant</item>
+        <item>Burger</item>
+        <item>Satay</item>
+    </string-array>
+
+    <string-array name="foodPrice">
+        <item>28.000</item>
+        <item>15.000</item>
+        <item>20.000</item>
+        <item>25.000</item>
+        <item>14.000</item>
+        <item>18.000</item>
+        <item>28.000</item>
+        <item>20.000</item>
+    </string-array>
+
+    <string-array name="foodImages">
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+    </string-array>
+
 </resources>

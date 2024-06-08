@@ -1,6 +1,7 @@
 package com.example.dishdelight.ui.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,13 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentHomeBinding
 import com.example.dishdelight.ui.home.listcategory.AdapterCategory
 import com.example.dishdelight.ui.home.listcategory.FoodCategory
+import com.example.dishdelight.ui.home.listpopular.AdapterPopularFood
+import com.example.dishdelight.ui.home.listpopular.PopularFood
 import com.example.dishdelight.ui.home.listprogram.AdapterProgram
 import com.example.dishdelight.ui.home.listprogram.FoodProgram
+import com.example.dishdelight.ui.scan.ScanActivity
 
 class HomeFragment : Fragment() {
 
@@ -29,6 +34,8 @@ class HomeFragment : Fragment() {
 
     private val categoryFoodList = ArrayList<FoodCategory>()
 
+    private val popularFood = ArrayList<PopularFood>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,14 +47,25 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //Show RV Category
+        //Show RV program
         binding.rvProgram.setHasFixedSize(true)
         ProgramFoodList.addAll(getFoodProgram())
         showRecylerProgram()
 
+        //show rv category
         binding.rvCategory.setHasFixedSize(true)
         categoryFoodList.addAll(getFoodCategory())
         showRecylerCategory()
+
+        //show rv popular food
+        binding.rvPopularFood.setHasFixedSize(true)
+        popularFood.addAll(getFood())
+        showRecyclerViewFood()
+
+        binding.btnScan.setOnClickListener {
+            val intent = Intent(requireActivity(), ScanActivity::class.java)
+            startActivity(intent)
+        }
 
 
         return root
@@ -98,6 +116,30 @@ class HomeFragment : Fragment() {
         val listFoodAdapter = AdapterCategory(categoryFoodList)
         Log.d("jumlah list","nilai ${categoryFoodList}")
         binding.rvCategory.adapter = listFoodAdapter
+    }
+
+    //Food
+    @SuppressLint("Recycle")
+    private fun getFood(): ArrayList<PopularFood> {
+        val dataImg = resources.obtainTypedArray(R.array.foodImages)
+        val dataName = resources.getStringArray(R.array.foodName)
+        val dataPrice = resources.getStringArray(R.array.foodPrice)
+
+        val listFood = ArrayList<PopularFood>()
+        for (i in dataName.indices) {
+            val food = PopularFood(dataImg.getResourceId(i, -1), dataName[i], dataPrice[i])
+            listFood.add(food)
+        }
+        Log.d("HomeFragment", "Category list size: ${listFood.size}")
+        return listFood
+    }
+
+    private fun showRecyclerViewFood() {
+        binding.rvPopularFood.layoutManager =
+            GridLayoutManager(requireActivity(), 2)
+        val foodAdapter = AdapterPopularFood(popularFood)
+        Log.d("HomeFragment", "Category list size: ${popularFood.size}")
+        binding.rvPopularFood.adapter = foodAdapter
     }
 
 

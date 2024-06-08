@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Background"
-    android:fillViewport="true"
     tools:context=".ui.home.HomeFragment">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
@@ -85,6 +85,7 @@
         <!-- search view sementara pakai ini    -->
 
         <LinearLayout
+            android:id="@+id/search_bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/background_search"
@@ -92,7 +93,9 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/guideline7"
             app:layout_constraintStart_toStartOf="@id/guideline3"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="120dp"
+            >
 
             <ImageButton
                 android:id="@+id/btn_search"
@@ -156,7 +159,9 @@
             android:padding="8dp"
             android:src="@drawable/ic_scan"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="120dp"
+            />
 
 
         <!--    <TextView-->
@@ -184,15 +189,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layar2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/background_screen"
             android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline4"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toBottomOf="@id/guideline4">
 
             <TextView
                 android:id="@+id/title3"
@@ -219,7 +221,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
                 android:text="Category"
-                android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -244,6 +245,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvCategory"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularFood"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title5" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -284,7 +292,7 @@
             android:layout_height="64dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.03"
+            app:layout_constraintGuide_percent="0.05"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -315,13 +323,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="316dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="-7dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
