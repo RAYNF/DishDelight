@@ -14,4 +14,32 @@
     <string name="login">Sign in</string>
     <string name="searchbar_hint">Search deliciuous receipe here</string>
 
+
+    <!-- Category -->
+    <string-array name="programName">
+        <item>Dimsum</item>
+        <item>Sushi</item>
+        <item>Fast Food</item>
+        <item>Fries</item>
+        <item>Beverages</item>
+        <item>Noodles</item>
+        <item>Traditionals</item>
+    </string-array>
+
+    <string-array name="programImages">
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+        <item>@drawable/image_profile</item>
+    </string-array>
+
+    <string-array name="categoryName">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
+
 </resources>

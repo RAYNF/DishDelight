@@ -8,281 +8,321 @@
     android:fillViewport="true"
     tools:context=".ui.home.HomeFragment">
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-       <de.hdodenhof.circleimageview.CircleImageView
-           android:id="@+id/img_profile"
-           android:layout_width="54dp"
-           android:layout_height="54dp"
-           android:clickable="true"
-           android:src="@drawable/image_profile"
-           app:layout_constraintStart_toStartOf="@+id/guideline3"
-           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal3" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_profile"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:clickable="true"
+            android:src="@drawable/image_profile"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal3" />
 
-       <TextView
-           android:id="@+id/title1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="10dp"
-           android:fontFamily="@font/poppinsbold"
-           android:text="Hello"
-           android:textColor="@color/black"
-           android:textSize="16sp"
-           app:layout_constraintStart_toEndOf="@id/img_profile"
-           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal3" />
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Hello"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/img_profile"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal3" />
 
-       <TextView
-           android:id="@+id/name"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:fontFamily="@font/poppinsbold"
-           android:text="Dinusian"
-           android:textColor="@color/Dark"
-           android:textSize="16sp"
-           app:layout_constraintStart_toEndOf="@id/title1"
-           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal3" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Dinusian"
+            android:textColor="@color/Dark"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/title1"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal3" />
 
-       <TextView
-           android:id="@+id/title2"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="10dp"
-           android:fontFamily="@font/poppinsbold"
-           android:text="What do you want to cook ?"
-           android:textColor="@color/Muted"
-           android:textSize="14sp"
-           app:layout_constraintStart_toEndOf="@id/img_profile"
-           app:layout_constraintTop_toBottomOf="@id/title1" />
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="What do you want to cook ?"
+            android:textColor="@color/Muted"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/img_profile"
+            app:layout_constraintTop_toBottomOf="@id/title1" />
 
-       <ImageButton
-           android:id="@+id/btn_logout"
-           android:layout_width="34dp"
-           android:layout_height="34dp"
-           android:layout_marginTop="10dp"
-           android:background="@drawable/background_button_cirlce"
-           android:padding="6dp"
-           android:scaleType="centerInside"
-           android:src="@drawable/ic_logout"
-           app:layout_constraintStart_toStartOf="@+id/guideline7"
-           app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal3" />
+        <ImageButton
+            android:id="@+id/btn_logout"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_button_cirlce"
+            android:padding="6dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_logout"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal3" />
 
-       <ImageButton
-           android:id="@+id/btn_setting"
-           android:layout_width="34dp"
-           android:layout_height="34dp"
-           android:layout_marginLeft="10dp"
-           android:layout_marginTop="10dp"
-           android:background="@drawable/background_button_cirlce"
-           android:padding="6dp"
-           android:scaleType="centerInside"
-           android:src="@drawable/ic_setting"
-           app:layout_constraintStart_toEndOf="@id/btn_logout"
-           app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal3" />
+        <ImageButton
+            android:id="@+id/btn_setting"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_button_cirlce"
+            android:padding="6dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_setting"
+            app:layout_constraintStart_toEndOf="@id/btn_logout"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal3" />
 
-       <!-- search view sementara pakai ini    -->
+        <!-- search view sementara pakai ini    -->
 
-<!--       <LinearLayout-->
-<!--           android:layout_width="0dp"-->
-<!--           android:layout_height="wrap_content"-->
-<!--           android:background="@drawable/background_search"-->
-<!--           android:gravity="center_vertical"-->
-<!--           android:orientation="horizontal"-->
-<!--           app:layout_constraintEnd_toEndOf="@id/guideline7"-->
-<!--           app:layout_constraintStart_toStartOf="@id/guideline3"-->
-<!--           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9">-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/guideline7"
+            app:layout_constraintStart_toStartOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9">
 
-<!--           <ImageButton-->
-<!--               android:id="@+id/btn_search"-->
-<!--               android:layout_width="wrap_content"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:background="@android:color/transparent"-->
-<!--               android:padding="8dp"-->
-<!--               android:src="@drawable/ic_search" />-->
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:src="@drawable/ic_search" />
 
-<!--           <EditText-->
-<!--               android:id="@+id/searchEditText"-->
-<!--               android:layout_width="0dp"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:layout_weight="1"-->
-<!--               android:background="@android:color/transparent"-->
-<!--               android:focusable="true"-->
-<!--               android:hint="@string/searchbar_hint"-->
-<!--               android:paddingStart="8dp"-->
-<!--               android:paddingEnd="8dp"-->
-<!--               android:textColorHint="@color/Muted"-->
-<!--               android:textSize="14sp" />-->
-
-
-<!--       </LinearLayout>-->
-       <!-- batas akhir search view   -->
-
-         search view seharus nya cuman masih error
-
-           <com.google.android.material.search.SearchBar
-               android:id="@+id/searchBar"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_marginHorizontal="16dp"
-               android:layout_marginTop="16dp"
-               android:hint="@string/searchbar_hint"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent">
-           </com.google.android.material.search.SearchBar>
-
-           <com.google.android.material.search.SearchView
-               android:id="@+id/searchView"
-               android:layout_width="0dp"
-               android:layout_height="0dp"
-               android:hint="@string/searchbar_hint"
-               app:layout_anchor="@id/searchBar"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent">
-           </com.google.android.material.search.SearchView>
-
-       <!--  batas search view seharus nya cuman masih error  -->
-
-       <ImageButton
-           android:id="@+id/btn_scan"
-           android:layout_width="37dp"
-           android:layout_height="41dp"
-           android:layout_marginLeft="25dp"
-           android:background="@drawable/background_button_scan"
-           android:padding="8dp"
-           android:src="@drawable/ic_scan"
-           app:layout_constraintStart_toStartOf="@+id/guideline7"
-           app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9" />
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:hint="@string/searchbar_hint"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textColorHint="@color/Muted"
+                android:textSize="14sp" />
 
 
-       <!--    <TextView-->
-       <!--        android:id="@+id/title1"-->
-       <!--        android:layout_width="wrap_content"-->
-       <!--        android:layout_height="wrap_content"-->
-       <!--        android:fontFamily="@font/poppinsbold"-->
-       <!--        android:text="Login"-->
-       <!--        android:textColor="@color/black"-->
-       <!--        android:textSize="50sp"-->
-       <!--        app:layout_constraintStart_toStartOf="@id/guideline2"-->
-       <!--        app:layout_constraintTop_toBottomOf="@id/guideline1" />-->
+        </LinearLayout>
+        <!-- batas akhir search view   -->
 
-       <!--    <TextView-->
-       <!--        android:id="@+id/title2"-->
-       <!--        android:layout_width="wrap_content"-->
-       <!--        android:layout_height="wrap_content"-->
-       <!--        android:fontFamily="@font/poppinsmedium"-->
-       <!--        android:text="Sign in to continue"-->
-       <!--        android:textColor="@color/black"-->
-       <!--        android:textSize="17sp"-->
-       <!--        app:layout_constraintStart_toStartOf="@id/guideline3"-->
-       <!--        app:layout_constraintTop_toBottomOf="@id/title1" />-->
+        <!--  search view seharus nya cuman masih error  -->
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:id="@+id/layar2"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:background="@drawable/background_screen"
-           android:padding="16dp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.0"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@id/guideline4"
-           app:layout_constraintVertical_bias="0.0">
+        <!--    <com.google.android.material.search.SearchBar-->
+        <!--        android:id="@+id/searchBar"-->
+        <!--        android:layout_width="0dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginHorizontal="16dp"-->
+        <!--        android:layout_marginTop="16dp"-->
+        <!--        android:hint="@string/searchbar_hint"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent">-->
+        <!--    </com.google.android.material.search.SearchBar>-->
 
-           <TextView
-               android:id="@+id/title3"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:fontFamily="@font/poppinsbold"
-               android:text="Program"
-               android:textColor="@color/black"
-               android:textSize="20sp"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+        <!--    <com.google.android.material.search.SearchView-->
+        <!--        android:id="@+id/searchView"-->
+        <!--        android:layout_width="0dp"-->
+        <!--        android:layout_height="0dp"-->
+        <!--        android:hint="@string/searchbar_hint"-->
+        <!--        app:layout_anchor="@id/searchBar"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent">-->
+        <!--    </com.google.android.material.search.SearchView>-->
+
+        <!--  batas search view seharus nya cuman masih error  -->
+
+        <ImageButton
+            android:id="@+id/btn_scan"
+            android:layout_width="37dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/background_button_scan"
+            android:padding="8dp"
+            android:src="@drawable/ic_scan"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal9" />
 
 
-           <androidx.constraintlayout.widget.Guideline
-               android:id="@+id/guideline10"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               app:layout_constraintGuide_begin="110dp" />
+        <!--    <TextView-->
+        <!--        android:id="@+id/title1"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:fontFamily="@font/poppinsbold"-->
+        <!--        android:text="Login"-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="50sp"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/guideline2"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/guideline1" />-->
 
-           <androidx.constraintlayout.widget.Guideline
-               android:id="@+id/guideline11"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               app:layout_constraintGuide_begin="83dp" />
+        <!--    <TextView-->
+        <!--        android:id="@+id/title2"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:fontFamily="@font/poppinsmedium"-->
+        <!--        android:text="Sign in to continue"-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="17sp"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/guideline3"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/title1" />-->
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layar2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/background_screen"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline4"
+            app:layout_constraintVertical_bias="1.0">
 
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guideline1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           app:layout_constraintGuide_begin="89dp" />
-
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guidelineHorizontal9"
-           android:layout_width="wrap_content"
-           android:layout_height="64dp"
-           android:orientation="horizontal"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintGuide_percent="0.12"
-           app:layout_constraintStart_toStartOf="parent" />
-
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guidelineHorizontal3"
-           android:layout_width="wrap_content"
-           android:layout_height="64dp"
-           android:orientation="horizontal"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintGuide_percent="0.03"
-           app:layout_constraintStart_toStartOf="parent" />
-
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guideline2"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           app:layout_constraintGuide_begin="126dp" />
-
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guideline3"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           app:layout_constraintGuide_begin="16dp" />
-
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guideline4"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           app:layout_constraintGuide_begin="169dp" />
+            <TextView
+                android:id="@+id/title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Program"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guideline7"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           app:layout_constraintGuide_begin="316dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProgram"
+                android:layout_width="0dp"
+                android:layout_height="210dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title3" />
 
-       <androidx.constraintlayout.widget.Guideline
-           android:id="@+id/guideline9"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           app:layout_constraintGuide_begin="-7dp" />
+            <TextView
+                android:id="@+id/title4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Category"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvProgram"/>
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategory"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title4" />
+
+            <TextView
+                android:id="@+id/title5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Popular Recipes"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvCategory"/>
+
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="110dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="83dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="89dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHorizontal9"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.12"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHorizontal3"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.03"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="126dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="169dp" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="316dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="-7dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
