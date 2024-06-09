@@ -56,6 +56,7 @@ dependencies {
     //circle image
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-//    implementation ("com.google.android.material:material:1.6.0")
+//    //gant chart
+//    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }

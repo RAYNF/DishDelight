@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DishDelight" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.DishDelight" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -19,4 +19,18 @@
         <item name="cornerSize">16dp</item> <!-- Sesuaikan dengan kebutuhan -->
     </style>
 
+    <!-- style custom searchbar-->
+    <style name="customSearchbar" parent="Widget.Material3.SearchBar.Outlined">
+        <item name="shapeAppearanceOverlay">@style/customCornerSearchBar</item>
+        <!-- stroke color disini -->
+        <item name="strokeColor">@color/black</item>
+        <!-- besar nya size stroke -->
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <!-- custom radius disini-->
+    <style name="customCornerSearchBar">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

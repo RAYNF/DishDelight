@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +21,7 @@ import com.example.dishdelight.ui.home.listpopular.PopularFood
 import com.example.dishdelight.ui.home.listprogram.AdapterProgram
 import com.example.dishdelight.ui.home.listprogram.FoodProgram
 import com.example.dishdelight.ui.scan.ScanActivity
+import com.example.dishdelight.ui.setting.SettingActivity
 
 class HomeFragment : Fragment() {
 
@@ -64,6 +66,23 @@ class HomeFragment : Fragment() {
 
         binding.btnScan.setOnClickListener {
             val intent = Intent(requireActivity(), ScanActivity::class.java)
+            startActivity(intent)
+        }
+
+        with(binding){
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.setText(searchView.text)
+                    searchView.hide()
+                    Toast.makeText(requireActivity(),searchView.text,Toast.LENGTH_SHORT).show()
+                    false
+                }
+        }
+
+        binding.btnSetting.setOnClickListener {
+            val intent = Intent(requireActivity(), SettingActivity::class.java)
             startActivity(intent)
         }
 

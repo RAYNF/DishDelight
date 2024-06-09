@@ -75,4 +75,18 @@
         <item>@drawable/image_profile</item>
     </string-array>
 
+    <!-- scan-->
+    <string name="camera_x">CameraX</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="upload">Analyze</string>
+    <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
+
+    <string-array name="foodNutrion">
+        <item>Rich in karbohidrat</item>
+        <item>Rich in Protein</item>
+        <item>Rich in Fat</item>
+        <item>Rich in Fiber</item>
+    </string-array>
+
 </resources>
