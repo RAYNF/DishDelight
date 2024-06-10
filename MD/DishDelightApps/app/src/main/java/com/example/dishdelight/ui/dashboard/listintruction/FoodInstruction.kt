@@ -1,3 +1,3 @@
 package com.example.dishdelight.ui.dashboard.listintruction
 
-data class FoodInstruction(val name:String)
+data class FoodInstruction(val name:String,val step:String)

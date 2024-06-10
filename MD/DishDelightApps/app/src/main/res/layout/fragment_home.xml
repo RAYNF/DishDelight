@@ -193,42 +193,77 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layar2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@drawable/background_screen"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline4">
 
-            <TextView
-                android:id="@+id/title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsbold"
-                android:text="Program"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/higlight_food"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/img_program"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/image_boarding"
+                            app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvProgram"
-                android:layout_width="0dp"
-                android:layout_height="210dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/title3" />
+                        <TextView
+                            android:id="@+id/tv_name_higlight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:text="Siomay Street Food"
+                            android:textColor="@color/Dark"
+                            android:textSize="20sp" />
+
+                    </FrameLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/rvProgram"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="210dp"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/title3" />-->
 
             <TextView
                 android:id="@+id/title4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="20dp"
                 android:text="Category"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvProgram" />
+                app:layout_constraintTop_toBottomOf="@id/higlight_food" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategory"

@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@id/title1" />
 
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_addIngredient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -92,7 +92,7 @@
             android:layout_marginTop="20dp"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_add" />
+            app:layout_constraintTop_toBottomOf="@id/btn_addIngredient" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvInstruction"
@@ -103,6 +103,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title2" />
 
+
+        <Button
+            android:id="@+id/btn_addIntruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Dark"
+            android:text="Add"
+            app:layout_constraintTop_toBottomOf="@id/rvInstruction"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
 

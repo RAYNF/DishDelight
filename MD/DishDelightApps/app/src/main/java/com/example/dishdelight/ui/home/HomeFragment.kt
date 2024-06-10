@@ -50,9 +50,9 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         //Show RV program
-        binding.rvProgram.setHasFixedSize(true)
-        ProgramFoodList.addAll(getFoodProgram())
-        showRecylerProgram()
+//        binding.rvProgram.setHasFixedSize(true)
+//        ProgramFoodList.addAll(getFoodProgram())
+//        showRecylerProgram()
 
         //show rv category
         binding.rvCategory.setHasFixedSize(true)
@@ -98,24 +98,24 @@ class HomeFragment : Fragment() {
 
     // Category
     @SuppressLint("Recycle")
-    private fun getFoodProgram(): ArrayList<FoodProgram> {
-        val catName = resources.getStringArray(R.array.programName)
-        val catImg = resources.obtainTypedArray(R.array.programImages)
+//    private fun getFoodProgram(): ArrayList<FoodProgram> {
+//        val catName = resources.getStringArray(R.array.programName)
+//        val catImg = resources.obtainTypedArray(R.array.programImages)
+//
+//        val listProgram = ArrayList<FoodProgram>()
+//        for (i in catName.indices) {
+//            val food = FoodProgram(catName[i], catImg.getResourceId(i, -1))
+//            listProgram.add(food)
+//        }
+//        return listProgram
+//    }
 
-        val listProgram = ArrayList<FoodProgram>()
-        for (i in catName.indices) {
-            val food = FoodProgram(catName[i], catImg.getResourceId(i, -1))
-            listProgram.add(food)
-        }
-        return listProgram
-    }
-
-    private fun showRecylerProgram() {
-        binding.rvProgram.layoutManager =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-        val listFoodAdapter = AdapterProgram(ProgramFoodList)
-        binding.rvProgram.adapter = listFoodAdapter
-    }
+//    private fun showRecylerProgram() {
+//        binding.rvProgram.layoutManager =
+//            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+//        val listFoodAdapter = AdapterProgram(ProgramFoodList)
+//        binding.rvProgram.adapter = listFoodAdapter
+//    }
 
     private fun getFoodCategory(): ArrayList<FoodCategory> {
         val catName = resources.getStringArray(R.array.categoryName)

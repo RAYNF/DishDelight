@@ -53,6 +53,28 @@
         <item>Satay</item>
     </string-array>
 
+    <string-array name="foodInstruction">
+        <item>Grilled Chicken</item>
+        <item>Sandwich</item>
+        <item>Spaghetti</item>
+        <item>Ramen</item>
+        <item>Burrito</item>
+        <item>Croissant</item>
+        <item>Burger</item>
+        <item>Satay</item>
+    </string-array>
+
+    <string-array name="foodInstructionStep">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
     <string-array name="foodPrice">
         <item>28.000</item>
         <item>15.000</item>
@@ -88,5 +110,12 @@
         <item>Rich in Fat</item>
         <item>Rich in Fiber</item>
     </string-array>
+
+    <string name="tab_text_1">Home</string>
+    <string name="tab_text_2">Profile</string>
+    <string name="tab_text_3">Setting</string>
+    <string name="content_tab_home">Welcome Home</string>
+    <string name="content_tab_profile">Change your Profile here</string>
+    <string name="content_tab_text">This is Tab %1$d</string>
 
 </resources>

@@ -14,6 +14,7 @@ import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentDashboardBinding
 import com.example.dishdelight.ui.dashboard.listingredient.AdapterIngredients
 import com.example.dishdelight.ui.dashboard.listingredient.FoodIngredients
+import com.example.dishdelight.ui.dashboard.listintruction.AdapterInstruction
 import com.example.dishdelight.ui.dashboard.listintruction.FoodInstruction
 import com.example.dishdelight.ui.home.listpopular.AdapterPopularFood
 import com.example.dishdelight.ui.home.listpopular.PopularFood
@@ -46,6 +47,14 @@ class DashboardFragment : Fragment() {
         listIngredientsFood.addAll(getFood())
         showRecyclerViewFood()
 
+        binding.rvInstruction.setHasFixedSize(true)
+        listIntructionFood.addAll(getInstruction())
+        showRecyclerIntructionFood()
+
+        binding.btnAddIngredient.setOnClickListener {
+
+        }
+
         return root
     }
 
@@ -74,5 +83,26 @@ class DashboardFragment : Fragment() {
         val foodAdapter = AdapterIngredients(listIngredientsFood)
         Log.d("HomeFragment", "Category list size: ${listIngredientsFood.size}")
         binding.rvIngredient.adapter = foodAdapter
+    }
+
+    private fun getInstruction(): ArrayList<FoodInstruction> {
+        val dataName = resources.getStringArray(R.array.foodInstruction)
+        val dataPrice = resources.getStringArray(R.array.foodInstructionStep)
+
+        val listFood = ArrayList<FoodInstruction>()
+        for (i in dataName.indices) {
+            val food = FoodInstruction( dataName[i], dataPrice[i])
+            listFood.add(food)
+        }
+        Log.d("Instruction", "instruction list size: ${listFood.size}")
+        return listFood
+    }
+
+    private fun showRecyclerIntructionFood() {
+        binding.rvInstruction.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+        val foodAdapter = AdapterInstruction(listIntructionFood)
+        Log.d("instruction", "intruction listIntructionFood list size: ${listIntructionFood.size}")
+        binding.rvInstruction.adapter = foodAdapter
     }
 }

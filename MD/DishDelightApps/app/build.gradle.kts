@@ -59,4 +59,7 @@ dependencies {
 //    //gant chart
 //    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
+    //view pager 2
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
 }

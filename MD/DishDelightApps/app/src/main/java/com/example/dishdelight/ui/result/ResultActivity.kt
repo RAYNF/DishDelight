@@ -1,5 +1,6 @@
 package com.example.dishdelight.ui.result
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.ActivityResultBinding
+import com.example.dishdelight.ui.detailrecipe.DetailRecipeActivity
 import com.example.dishdelight.ui.home.listprogram.AdapterProgram
 import com.example.dishdelight.ui.home.listprogram.FoodProgram
+import com.example.dishdelight.ui.register.RegisterActivity
 import com.example.dishdelight.ui.result.grafik.AdapterNutrisi
 import com.example.dishdelight.ui.result.grafik.Nutrisi
 import com.example.dishdelight.ui.result.listnutrion.AdapterNutrion
@@ -57,6 +60,12 @@ class ResultActivity : AppCompatActivity() {
         binding.rvRelatedRecipe.setHasFixedSize(true)
         relatedFoodList.addAll(getFoodRelatedData())
         showRecyclerRelated()
+
+        binding.btnDetailRecipe.setOnClickListener {
+            val intent = Intent(this, DetailRecipeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun getFoodCategoryData(): ArrayList<FoodNutrion> {

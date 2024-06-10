@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_galeri" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_intruksi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
