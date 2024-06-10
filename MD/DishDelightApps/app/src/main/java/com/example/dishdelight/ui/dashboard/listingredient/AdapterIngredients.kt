@@ -1,4 +1,4 @@
-package com.example.dishdelight.ui.notifications.listfavorit
+package com.example.dishdelight.ui.dashboard.listingredient
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,33 +9,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dishdelight.R
 import com.example.dishdelight.ui.home.listpopular.PopularFood
 
-class AdapterFavoriteFood(private val listCategory: ArrayList<FavorieFood>): RecyclerView.Adapter<AdapterFavoriteFood.ProgramViewHolder>() {
+class AdapterIngredients(private val listCategory: ArrayList<FoodIngredients>) :
+    RecyclerView.Adapter<AdapterIngredients.ProgramViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AdapterFavoriteFood.ProgramViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_favorit, parent, false)
+    ): AdapterIngredients.ProgramViewHolder {
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_create, parent, false)
         return ProgramViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AdapterFavoriteFood.ProgramViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdapterIngredients.ProgramViewHolder, position: Int) {
         val name = listCategory[position].name
         val image = listCategory[position].image
-        val description = listCategory[position].dataDescription
 
         holder.categoryImg.setImageResource(image)
         holder.categoryTxt.text = name
-        holder.descriptionTxt.text = description
     }
 
     override fun getItemCount(): Int {
         return listCategory.size
     }
 
-    class ProgramViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ProgramViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryImg: ImageView = itemView.findViewById(R.id.img_program)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
-        val descriptionTxt: TextView = itemView.findViewById(R.id.tv_description)
     }
 
 }

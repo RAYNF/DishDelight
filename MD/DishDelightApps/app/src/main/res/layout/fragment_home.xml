@@ -131,7 +131,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="130dp"
             android:background="@drawable/background_screen"
             android:hint="@string/searchbar_hint"
             app:layout_constraintEnd_toEndOf="@id/guideline7"
@@ -160,7 +160,7 @@
             android:layout_width="37dp"
             android:layout_height="41dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="140dp"
             android:background="@drawable/background_button_scan"
             android:padding="8dp"
             android:src="@drawable/ic_scan"
@@ -252,7 +252,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopularFood"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title5" />
@@ -318,7 +318,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="170dp" />
+            app:layout_constraintGuide_begin="209dp" />
 
 
         <androidx.constraintlayout.widget.Guideline
