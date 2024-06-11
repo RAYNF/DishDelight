@@ -20,6 +20,8 @@ import com.example.dishdelight.ui.home.listpopular.AdapterPopularFood
 import com.example.dishdelight.ui.home.listpopular.PopularFood
 import com.example.dishdelight.ui.home.listprogram.AdapterProgram
 import com.example.dishdelight.ui.home.listprogram.FoodProgram
+import com.example.dishdelight.ui.home.searchresult.AdapterSearchResult
+import com.example.dishdelight.ui.home.searchresult.SearchResult
 import com.example.dishdelight.ui.scan.ScanActivity
 import com.example.dishdelight.ui.setting.SettingActivity
 
@@ -37,6 +39,12 @@ class HomeFragment : Fragment() {
     private val categoryFoodList = ArrayList<FoodCategory>()
 
     private val popularFood = ArrayList<PopularFood>()
+
+    //data dumy search view
+    private val searchResults = listOf(
+        SearchResult(R.drawable.image_profile, "Siomay Street Food", "Indonesia", "2.4k likes"),
+        SearchResult(R.drawable.image_profile, "Bakso Malang", "Indonesia", "1.5k likes")
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,10 +84,14 @@ class HomeFragment : Fragment() {
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
                     searchView.hide()
-                    Toast.makeText(requireActivity(),searchView.text,Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireActivity(),searchView.text,Toast.LENGTH_SHORT).show()
+//                    updateSearchResults(binding.searchView.text.toString())
                     false
                 }
         }
+
+//        binding.recyclerViewSearchResults.layoutManager = LinearLayoutManager(requireContext())
+//        binding.recyclerViewSearchResults.adapter = AdapterSearchResult(searchResults)
 
         binding.btnSetting.setOnClickListener {
             val intent = Intent(requireActivity(), SettingActivity::class.java)
@@ -87,8 +99,21 @@ class HomeFragment : Fragment() {
         }
 
 
+
+
         return root
     }
+
+//    private fun updateSearchResults(query: String) {
+//    val filteredResults = searchResults.filter {
+//        it.name.contains(query,ignoreCase = true)
+//    }
+//        (binding.recyclerViewSearchResults.adapter as AdapterSearchResult).apply {
+//            (searchResults as MutableList).clear()
+//            searchResults.addAll(filteredResults)
+//            notifyDataSetChanged()
+//        }
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
