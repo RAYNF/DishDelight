@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppinsbold"
-        android:text="Login"
+        android:text="@string/judul_1"
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintStart_toStartOf="@id/guideline2"

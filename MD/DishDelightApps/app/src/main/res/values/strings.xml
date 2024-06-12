@@ -1,13 +1,21 @@
 <resources>
     <string name="app_name">DishDelight</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- activity splash -->
     <string name="name_app1">Dish</string>
     <string name="name_app2"> Delight</string>
+
+    <!-- activity welcome -->
     <string name="slogan">60k+ Resep Premium</string>
+    <string name="Ajakan_1">Ayo</string>
+    <string name="Ajakan_2">Memasak</string>
+    <string name="Ajakan_3">Temukan berbagai resep istimewa</string>
+    <string name="Ajakan_4">untuk masakanmu</string>
+    <string name="ajakan_button_memasak">Mulai Memasak</string>
+
+    <!-- activity login -->
+    <string name="judul_1">Login</string>
+    
 
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -117,5 +125,11 @@
     <string name="content_tab_home">Welcome Home</string>
     <string name="content_tab_profile">Change your Profile here</string>
     <string name="content_tab_text">This is Tab %1$d</string>
+
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 
 </resources>

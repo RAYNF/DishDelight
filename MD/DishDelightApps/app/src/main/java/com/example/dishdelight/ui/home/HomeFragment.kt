@@ -14,10 +14,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentHomeBinding
-import com.example.dishdelight.ui.home.listcategory.AdapterCategory
-import com.example.dishdelight.ui.home.listcategory.FoodCategory
-import com.example.dishdelight.ui.home.listpopular.AdapterPopularFood
-import com.example.dishdelight.ui.home.listpopular.PopularFood
+import com.example.dishdelight.Adapter.AdapterCategoryRecipeFragmentHome
+import com.example.dishdelight.data.dataclass.DataClassRecipeCategoryFragmentHome
+import com.example.dishdelight.Adapter.AdapterPopularRecipeFragmentHome
+import com.example.dishdelight.data.dataclass.DataClassRecipePopularFragmentHome
+import com.example.dishdelight.data.viewmodel.HomeViewModelFragmentHome
 import com.example.dishdelight.ui.scan.ScanActivity
 import com.example.dishdelight.ui.setting.SettingActivity
 
@@ -27,9 +28,9 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val categoryFoodList = ArrayList<FoodCategory>()
+    private val categoryFoodList = ArrayList<DataClassRecipeCategoryFragmentHome>()
 
-    private val popularFood = ArrayList<PopularFood>()
+    private val dataClassRecipePopularFragmentHome = ArrayList<DataClassRecipePopularFragmentHome>()
 
 
     override fun onCreateView(
@@ -37,8 +38,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val homeViewModelFragmentHome =
+            ViewModelProvider(this).get(HomeViewModelFragmentHome::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -52,7 +53,7 @@ class HomeFragment : Fragment() {
 
         //show rv popular food
         binding.rvPopularFood.setHasFixedSize(true)
-        popularFood.addAll(getFood())
+        dataClassRecipePopularFragmentHome.addAll(getFood())
         showRecyclerViewFood()
 
         binding.btnScan.setOnClickListener {
@@ -84,12 +85,12 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun getFoodCategory(): ArrayList<FoodCategory> {
+    private fun getFoodCategory(): ArrayList<DataClassRecipeCategoryFragmentHome> {
         val catName = resources.getStringArray(R.array.categoryName)
 
-        val listCategory = ArrayList<FoodCategory>()
+        val listCategory = ArrayList<DataClassRecipeCategoryFragmentHome>()
         for (i in catName.indices) {
-            val food = FoodCategory(catName[i])
+            val food = DataClassRecipeCategoryFragmentHome(catName[i])
             listCategory.add(food)
         }
         Log.d("HomeFragment", "Category list size: ${listCategory.size}")
@@ -99,21 +100,21 @@ class HomeFragment : Fragment() {
     private fun showRecylerCategory() {
         binding.rvCategory.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-        val listFoodAdapter = AdapterCategory(categoryFoodList)
+        val listFoodAdapter = AdapterCategoryRecipeFragmentHome(categoryFoodList)
         Log.d("jumlah list","nilai ${categoryFoodList}")
         binding.rvCategory.adapter = listFoodAdapter
     }
 
     //Food
     @SuppressLint("Recycle")
-    private fun getFood(): ArrayList<PopularFood> {
+    private fun getFood(): ArrayList<DataClassRecipePopularFragmentHome> {
         val dataImg = resources.obtainTypedArray(R.array.foodImages)
         val dataName = resources.getStringArray(R.array.foodName)
         val dataPrice = resources.getStringArray(R.array.foodPrice)
 
-        val listFood = ArrayList<PopularFood>()
+        val listFood = ArrayList<DataClassRecipePopularFragmentHome>()
         for (i in dataName.indices) {
-            val food = PopularFood(dataImg.getResourceId(i, -1), dataName[i], dataPrice[i])
+            val food = DataClassRecipePopularFragmentHome(dataImg.getResourceId(i, -1), dataName[i], dataPrice[i])
             listFood.add(food)
         }
         Log.d("HomeFragment", "Category list size: ${listFood.size}")
@@ -123,8 +124,8 @@ class HomeFragment : Fragment() {
     private fun showRecyclerViewFood() {
         binding.rvPopularFood.layoutManager =
             GridLayoutManager(requireActivity(), 2)
-        val foodAdapter = AdapterPopularFood(popularFood)
-        Log.d("HomeFragment", "Category list size: ${popularFood.size}")
+        val foodAdapter = AdapterPopularRecipeFragmentHome(dataClassRecipePopularFragmentHome)
+        Log.d("HomeFragment", "Category list size: ${dataClassRecipePopularFragmentHome.size}")
         binding.rvPopularFood.adapter = foodAdapter
     }
 

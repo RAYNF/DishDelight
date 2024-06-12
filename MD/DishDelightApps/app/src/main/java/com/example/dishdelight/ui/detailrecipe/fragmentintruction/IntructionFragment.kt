@@ -10,15 +10,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentIntructionBinding
-import com.example.dishdelight.ui.dashboard.listintruction.AdapterInstruction
-import com.example.dishdelight.ui.dashboard.listintruction.FoodInstruction
-import com.example.dishdelight.ui.detailrecipe.fragmentintruction.listintruction.AdapterDetaiIRecipeInstruction
+import com.example.dishdelight.data.dataclass.DataClassRecipeIntructionFragmentDashboard
+import com.example.dishdelight.Adapter.AdapterDetaiIIntructionRecipeFragmentIntruction
 
 class IntructionFragment : Fragment() {
 
     private var _binding:FragmentIntructionBinding? = null
 
-    private val listIntructionFood = ArrayList<FoodInstruction>()
+    private val listIntructionFood = ArrayList<DataClassRecipeIntructionFragmentDashboard>()
 
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -43,13 +42,13 @@ class IntructionFragment : Fragment() {
         return root
     }
 
-    private fun getInstruction(): ArrayList<FoodInstruction> {
+    private fun getInstruction(): ArrayList<DataClassRecipeIntructionFragmentDashboard> {
         val dataName = resources.getStringArray(R.array.foodInstruction)
         val dataPrice = resources.getStringArray(R.array.foodInstructionStep)
 
-        val listFood = ArrayList<FoodInstruction>()
+        val listFood = ArrayList<DataClassRecipeIntructionFragmentDashboard>()
         for (i in dataName.indices) {
-            val food = FoodInstruction( dataName[i], dataPrice[i])
+            val food = DataClassRecipeIntructionFragmentDashboard( dataName[i], dataPrice[i])
             listFood.add(food)
         }
         Log.d("Instruction", "instruction list size: ${listFood.size}")
@@ -59,7 +58,7 @@ class IntructionFragment : Fragment() {
     private fun showRecylerIntructionFood() {
         binding.rvInstruction.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val foodAdapter = AdapterDetaiIRecipeInstruction(listIntructionFood)
+        val foodAdapter = AdapterDetaiIIntructionRecipeFragmentIntruction(listIntructionFood)
         Log.d("instruction", "intruction listIntructionFood list size: ${listIntructionFood.size}")
         binding.rvInstruction.adapter = foodAdapter
     }

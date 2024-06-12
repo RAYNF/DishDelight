@@ -9,14 +9,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.ActivityDetailRecipeBinding
-import com.example.dishdelight.ui.detailrecipe.listdetailnutrion.AdapterDetailNutrition
-import com.example.dishdelight.ui.detailrecipe.listdetailnutrion.DetailNutrition
-import com.example.dishdelight.ui.home.listpopular.AdapterPopularFood
-import com.example.dishdelight.ui.home.listpopular.PopularFood
+import com.example.dishdelight.Adapter.AdapterDetailNutritionRecipeActivityDetailRecipe
+import com.example.dishdelight.Adapter.SectionPagerAdapterActivityDetailRecipe
+import com.example.dishdelight.data.dataclass.DataClassDetailNutrionRecipeActivityDetailRecipe
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -31,7 +29,7 @@ class DetailRecipeActivity : AppCompatActivity() {
     }
 
     //blm selai rv nutrion
-    private val listDetailNutrition = ArrayList<DetailNutrition>()
+    private val listDataClassDetailNutrionRecipeActivityDetailRecipe = ArrayList<DataClassDetailNutrionRecipeActivityDetailRecipe>()
 
     private lateinit var binding: ActivityDetailRecipeBinding
 
@@ -49,13 +47,13 @@ class DetailRecipeActivity : AppCompatActivity() {
         }
 
         binding.rvNutrion.setHasFixedSize(true)
-        listDetailNutrition.addAll(getFood())
+        listDataClassDetailNutrionRecipeActivityDetailRecipe.addAll(getFood())
         showRecyclerViewFood()
 
         //section page adapter
-        val sectionPagerAdapter = SectionPagerAdapter(this)
+        val sectionPagerAdapterActivityDetailRecipe = SectionPagerAdapterActivityDetailRecipe(this)
         val viewPager:ViewPager2 = binding.viewPager
-        viewPager.adapter = sectionPagerAdapter
+        viewPager.adapter = sectionPagerAdapterActivityDetailRecipe
         val tabs: TabLayout = binding.tabs
         TabLayoutMediator(tabs,viewPager){tab,position->
             tab.text = resources.getString(TAB_TITLES[position])
@@ -65,13 +63,13 @@ class DetailRecipeActivity : AppCompatActivity() {
         
     }
 
-    private fun getFood(): ArrayList<DetailNutrition> {
+    private fun getFood(): ArrayList<DataClassDetailNutrionRecipeActivityDetailRecipe> {
         val dataImg = resources.obtainTypedArray(R.array.foodImages)
         val dataName = resources.getStringArray(R.array.foodName)
 
-        val listFood = ArrayList<DetailNutrition>()
+        val listFood = ArrayList<DataClassDetailNutrionRecipeActivityDetailRecipe>()
         for (i in dataName.indices) {
-            val food = DetailNutrition(dataImg.getResourceId(i, -1), dataName[i])
+            val food = DataClassDetailNutrionRecipeActivityDetailRecipe(dataImg.getResourceId(i, -1), dataName[i])
             listFood.add(food)
         }
         Log.d("HomeFragment", "Category list size: ${listFood.size}")
@@ -81,8 +79,8 @@ class DetailRecipeActivity : AppCompatActivity() {
     private fun showRecyclerViewFood() {
         binding.rvNutrion.layoutManager =
             GridLayoutManager(this, 2,LinearLayoutManager.HORIZONTAL,false)
-        val foodAdapter = AdapterDetailNutrition(listDetailNutrition)
-        Log.d("HomeFragment", "Category list size: ${listDetailNutrition.size}")
+        val foodAdapter = AdapterDetailNutritionRecipeActivityDetailRecipe(listDataClassDetailNutrionRecipeActivityDetailRecipe)
+        Log.d("HomeFragment", "Category list size: ${listDataClassDetailNutrionRecipeActivityDetailRecipe.size}")
         binding.rvNutrion.adapter = foodAdapter
     }
 }

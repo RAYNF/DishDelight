@@ -10,24 +10,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.ActivityResultBinding
 import com.example.dishdelight.ui.detailrecipe.DetailRecipeActivity
-import com.example.dishdelight.ui.home.listprogram.AdapterProgram
-import com.example.dishdelight.ui.home.listprogram.FoodProgram
-import com.example.dishdelight.ui.register.RegisterActivity
-import com.example.dishdelight.ui.result.grafik.AdapterNutrisi
-import com.example.dishdelight.ui.result.grafik.Nutrisi
-import com.example.dishdelight.ui.result.listnutrion.AdapterNutrion
-import com.example.dishdelight.ui.result.listnutrion.FoodNutrion
-import com.example.dishdelight.ui.result.listrelated.AdapterRelatedFood
-import com.example.dishdelight.ui.result.listrelated.RelatedFood
+import com.example.dishdelight.Adapter.AdapterGrafikNutrisiActivityResult
+import com.example.dishdelight.data.dataclass.DataClassGrafikNutrisiActivityResult
+import com.example.dishdelight.Adapter.AdapterCategorizeNutrionValueActivityResult
+import com.example.dishdelight.data.dataclass.DataClassCategorizeNutrionValueActivityResult
+import com.example.dishdelight.Adapter.AdapterRelatedRecipeActivityResult
+import com.example.dishdelight.data.dataclass.DataClassRelatedRecipeActivityResult
 
 
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding
 
-    private val categoryFoodList = ArrayList<FoodNutrion>()
+    private val categoryFoodList = ArrayList<DataClassCategorizeNutrionValueActivityResult>()
 
-    private val relatedFoodList = ArrayList<RelatedFood>()
+    private val dataClassRelatedRecipeActivityResultList = ArrayList<DataClassRelatedRecipeActivityResult>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,18 +44,18 @@ class ResultActivity : AppCompatActivity() {
         //nutrisi
         binding.rvNutrion.setHasFixedSize(true)
         binding.rvNutrion.layoutManager = LinearLayoutManager(this)
-        val nutrisiList = listOf(
-            Nutrisi("Protein", 23),
-            Nutrisi("Fats", 23),
-            Nutrisi("Fibers", 23),
-            Nutrisi("Carbohidrat", 23)
+        val dataClassGrafikNutrisiActivityResultLists = listOf(
+            DataClassGrafikNutrisiActivityResult("Protein", 23),
+            DataClassGrafikNutrisiActivityResult("Fats", 23),
+            DataClassGrafikNutrisiActivityResult("Fibers", 23),
+            DataClassGrafikNutrisiActivityResult("Carbohidrat", 23)
         )
-        val adapter = AdapterNutrisi(nutrisiList)
+        val adapter = AdapterGrafikNutrisiActivityResult(dataClassGrafikNutrisiActivityResultLists)
         binding.rvNutrion.adapter = adapter
 
         //related recipe
         binding.rvRelatedRecipe.setHasFixedSize(true)
-        relatedFoodList.addAll(getFoodRelatedData())
+        dataClassRelatedRecipeActivityResultList.addAll(getFoodRelatedData())
         showRecyclerRelated()
 
         binding.btnDetailRecipe.setOnClickListener {
@@ -68,12 +65,12 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun getFoodCategoryData(): ArrayList<FoodNutrion> {
+    private fun getFoodCategoryData(): ArrayList<DataClassCategorizeNutrionValueActivityResult> {
         val catName = resources.getStringArray(R.array.foodNutrion)
 
-        val listCategory = ArrayList<FoodNutrion>()
+        val listCategory = ArrayList<DataClassCategorizeNutrionValueActivityResult>()
         for (i in catName.indices) {
-            val food = FoodNutrion(catName[i])
+            val food = DataClassCategorizeNutrionValueActivityResult(catName[i])
             listCategory.add(food)
         }
         return listCategory
@@ -82,18 +79,18 @@ class ResultActivity : AppCompatActivity() {
     private fun showRecyclerCategory() {
         binding.rvCategory.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val listFoodAdapter = AdapterNutrion(categoryFoodList)
+        val listFoodAdapter = AdapterCategorizeNutrionValueActivityResult(categoryFoodList)
         binding.rvCategory.adapter = listFoodAdapter
     }
 
-    private fun getFoodRelatedData(): ArrayList<RelatedFood> {
+    private fun getFoodRelatedData(): ArrayList<DataClassRelatedRecipeActivityResult> {
         val catName = resources.getStringArray(R.array.foodName)
         val catImg = resources.obtainTypedArray(R.array.foodImages)
         val description = resources.getStringArray(R.array.foodPrice)
 
-        val listProgram = ArrayList<RelatedFood>()
+        val listProgram = ArrayList<DataClassRelatedRecipeActivityResult>()
         for (i in catName.indices) {
-            val food = RelatedFood(catName[i], catImg.getResourceId(i, -1),description[i])
+            val food = DataClassRelatedRecipeActivityResult(catName[i], catImg.getResourceId(i, -1),description[i])
             listProgram.add(food)
         }
         return listProgram
@@ -102,7 +99,7 @@ class ResultActivity : AppCompatActivity() {
     private fun showRecyclerRelated() {
         binding.rvRelatedRecipe.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val listFoodAdapter = AdapterRelatedFood(relatedFoodList)
+        val listFoodAdapter = AdapterRelatedRecipeActivityResult(dataClassRelatedRecipeActivityResultList)
         binding.rvRelatedRecipe.adapter = listFoodAdapter
     }
 

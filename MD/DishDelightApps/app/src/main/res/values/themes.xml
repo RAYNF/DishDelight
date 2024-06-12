@@ -14,10 +14,13 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <!-- style custo image view   -->
     <style name="RoundedImageView" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item> <!-- Sesuaikan dengan kebutuhan -->
     </style>
+
 
     <!-- style custom searchbar-->
     <style name="customSearchbar" parent="Widget.Material3.SearchBar.Outlined">
