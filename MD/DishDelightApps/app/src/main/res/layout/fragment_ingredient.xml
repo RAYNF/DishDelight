@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="Ingredients"
+            android:text="@string/tv_ingredients_dashboard"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="6 item"
+            android:text="@string/tv_total_ingredient"
             android:textColor="@color/Muted"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="Creator"
+            android:text="@string/tv_creator_ingredient"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="Natalia Luca"
+            android:text="@string/tv_name_home"
             android:textColor="@color/Muted"
             android:textSize="16sp"
             android:layout_marginTop="10dp"
@@ -85,13 +85,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="I'm a perseon to cook everyware"
+            android:text="@string/tv_name_description_ingredient"
             android:textColor="@color/Muted"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/img_profile"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
-
-        <!--   blm selesai-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRelatedRecipe"

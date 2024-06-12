@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/poppinsbold"
-        android:text="Add Ingredients"
+        android:text="@string/tv_title_1_dialog_add_ingredients"
         android:textSize="20sp" />
 
     <ImageView
@@ -20,7 +20,7 @@
         android:id="@+id/imagePreview"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:contentDescription="Image Preview"
+        android:contentDescription="@string/image_preview_dialog_add_ingredient"
         android:scaleType="fitXY"
         android:src="@drawable/image_profile" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/Dark"
-            android:text="Galeri" />
+            android:text="@string/button_galeri_dashboard" />
 
         <Button
             android:id="@+id/btnCamera"
@@ -46,7 +46,7 @@
             android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:backgroundTint="@color/Dark"
-            android:text="Camera" />
+            android:text="@string/button_camera_dashboard" />
     </LinearLayout>
 
     <Button
@@ -54,6 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Dark"
-        android:text="Add" />
+        android:text="@string/button_add_dashboard" />
 
 </LinearLayout>

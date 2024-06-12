@@ -33,7 +33,7 @@ class AdapterListIngredientsRecipeFragmentDashboard(private val listCategory: Ar
     }
 
     class ProgramViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val categoryImg: ImageView = itemView.findViewById(R.id.img_program)
+        val categoryImg: ImageView = itemView.findViewById(R.id.img_highlight_recipe)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
     }
 

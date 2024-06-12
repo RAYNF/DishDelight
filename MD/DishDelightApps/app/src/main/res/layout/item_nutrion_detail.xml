@@ -32,6 +32,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppinsbold"
             android:padding="8dp"
+            android:maxLines="1"
+            android:lines="1"
+            android:textAlignment="center"
             android:text="@string/app_name"
             android:textColor="@color/Muted"
             android:textSize="14dp" />

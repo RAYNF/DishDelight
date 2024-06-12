@@ -25,7 +25,6 @@ class AdapterFavoriteRecipeFragmentNotification(private val listCategory: ArrayL
 
         holder.categoryImg.setImageResource(image)
         holder.categoryTxt.text = name
-        holder.descriptionTxt.text = description
     }
 
     override fun getItemCount(): Int {
@@ -33,9 +32,8 @@ class AdapterFavoriteRecipeFragmentNotification(private val listCategory: ArrayL
     }
 
     class ProgramViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val categoryImg: ImageView = itemView.findViewById(R.id.img_program)
+        val categoryImg: ImageView = itemView.findViewById(R.id.img_highlight_recipe)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
-        val descriptionTxt: TextView = itemView.findViewById(R.id.tv_description)
     }
 
 }

@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/title1"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="Dinusian"
+        android:text="@string/tv_name_home"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,17 +33,17 @@
         app:layout_constraintTop_toBottomOf="@+id/img_profile" />
 
     <TextView
-        android:id="@+id/title2"
+        android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="Dinusian@gmail.com"
+        android:text="@string/tv_email_setting"
         android:textColor="@color/Muted"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
 
     <TextView
@@ -54,12 +54,12 @@
         android:background="@drawable/background_button_scan"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="Profile Setting"
+        android:text="@string/tv_profile_Setting"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
 
     <TextView
@@ -69,7 +69,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="Email"
+        android:text="@string/tv_email_login"
         android:textColor="@color/Muted"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="username"
+        android:text="@string/tv_username_setting"
         android:textColor="@color/Muted"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="right"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/ic_arrow_right"
         android:background="@android:color/transparent"
@@ -119,7 +119,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="Password"
+        android:text="@string/tv_password_login"
         android:textColor="@color/Muted"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +130,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="right"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/ic_arrow_right"
         android:background="@android:color/transparent"
@@ -146,7 +146,7 @@
         android:background="@drawable/background_button_scan"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="Profile Setting"
+        android:text="@string/tv_application_setting"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="About App"
+        android:text="@string/tv_about_app_setting"
         android:textColor="@color/Muted"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +185,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppinsbold"
         android:padding="10dp"
-        android:text="Terms"
+        android:text="@string/tv_term_setting"
         android:textColor="@color/Muted"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"

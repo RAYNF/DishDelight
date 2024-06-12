@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.scan.ScanActivity"
-    android:padding="16dp"
-    >
+    android:padding="16dp">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
@@ -40,7 +39,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/Dark"
-        android:text="@string/gallery"
+        android:text="@string/button_galeri_dashboard"
       app:layout_constraintTop_toBottomOf="@id/previewImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -53,7 +52,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/Muted"
-        android:text="@string/camera"
+        android:text="@string/button_camera_dashboard"
         app:layout_constraintTop_toBottomOf="@id/btn_galeri"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -66,7 +65,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/Muted"
-        android:text="@string/upload"
+        android:text="@string/upload_scan"
         app:layout_constraintTop_toBottomOf="@id/btn_camera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

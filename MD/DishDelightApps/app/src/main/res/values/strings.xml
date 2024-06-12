@@ -2,26 +2,99 @@
     <string name="app_name">DishDelight</string>
 
     <!-- activity splash -->
-    <string name="name_app1">Dish</string>
-    <string name="name_app2"> Delight</string>
+    <string name="name_app_1_splash">Dish</string>
+    <string name="name_app_2_splash"> Delight</string>
 
     <!-- activity welcome -->
-    <string name="slogan">60k+ Resep Premium</string>
-    <string name="Ajakan_1">Ayo</string>
-    <string name="Ajakan_2">Memasak</string>
-    <string name="Ajakan_3">Temukan berbagai resep istimewa</string>
-    <string name="Ajakan_4">untuk masakanmu</string>
-    <string name="ajakan_button_memasak">Mulai Memasak</string>
+    <string name="slogan_welcome">60k+ Resep Premium</string>
+    <string name="Ajakan_1_welcome">Ayo</string>
+    <string name="Ajakan_2_welcome">Memasak</string>
+    <string name="Ajakan_3_welcome">Temukan berbagai resep istimewa</string>
+    <string name="Ajakan_4_welcome">untuk masakanmu</string>
+    <string name="ajakan_button_memasak_welcome">Mulai Memasak</string>
 
     <!-- activity login -->
-    <string name="judul_1">Login</string>
-    
+    <string name="judul_1_login">Login</string>
+    <string name="judul_2_login">Sig in to continue</string>
+    <string name="tv_email_login">Email</string>
+    <string name="tv_password_login">Password</string>
+    <string name="button_login">Sign in</string>
+    <string name="tv_dont_have_account_login">Don\'t Have Account?</string>
+    <string name="button_register_login">Register</string>
 
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="login">Sign in</string>
+    <!-- activity register -->
+    <string name="judul_1_register">Register</string>
+    <string name="judul_2_register">Register to continue</string>
+    <string name="tv_fullname_register">Full Name</string>
+    <string name="button_register">Register</string>
+
+    <!--  bottom menu  -->
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Create</string>
+    <string name="title_notifications">Saved</string>
+
+    <!-- fragment home -->
+    <string name="title_1_home">Hello</string>
+    <string name="tv_name_home">Dinusian</string>
+    <string name="title_2_home">What do you want to cook ?</string>
     <string name="searchbar_hint">Search deliciuous receipe here</string>
+    <string name="tv_name_recipe_hiighlight_home">Siomay Street Food</string>
+    <string name="tv_category_home">Category</string>
+    <string name="tv_popular_recipe_home">Popular Recipes</string>
 
+    <!-- fragment dashboard -->
+    <string name="button_camera_dashboard">Kamera</string>
+    <string name="button_galeri_dashboard">Galeri</string>
+    <string name="tv_ingredients_dashboard">Ingredients</string>
+    <string name="button_add_dashboard">Add</string>
+    <string name="tv_intruction_dashboard">Instruction</string>
+    <string name="button_breakfast_dashboard">Breakfast</string>
+    <string name="button_lunch_dashboard">Lunch</string>
+    <string name="button_dinner_dashboard">Dinner</string>
+    <string name="button_send_dashboard">Send</string>
+
+    <!-- fragment notifications -->
+    <string name="title_1_notificaions">My Favorites</string>
+
+    <!-- activity scan -->
+    <string name="upload_scan">Analyze</string>
+
+    <!-- activity setting -->
+    <string name="tv_email_setting">Dinusian@gmail.com</string>
+    <string name="tv_profile_Setting">Profile Setting</string>
+    <string name="tv_username_setting">username</string>
+    <string name="tv_application_setting">Application</string>
+    <string name="tv_about_app_setting">About App</string>
+    <string name="tv_term_setting">Language</string>
+
+    <!-- activity result -->
+    <string name="tv_nutrion_values_result">Nutrion values</string>
+    <string name="tv_related_recipes_result">Related Recipes</string>
+
+    <!-- activity detail -->
+    <string name="tv_description_detail_recipe">Siomay is one of the best delicious street food where almost liked</string>
+    <string name="tab_text_1">Ingredients</string>
+    <string name="tab_text_2">Intructions</string>
+
+    <!-- fragment ingredient -->
+    <string name="tv_total_ingredient">6 item</string>
+    <string name="tv_creator_ingredient">Creator</string>
+    <string name="tv_name_description_ingredient">I\'m a perseon to cook everyware</string>
+
+    <!-- fragmen intruction -->
+    <string name="tv_cooking_intruction">Cooking Instruction</string>
+
+    <!-- dialog add ingredient -->
+    <string name="tv_title_1_dialog_add_ingredients">Add Ingredients</string>
+    <string name="image_preview_dialog_add_ingredient">Image Preview</string>
+
+    <!-- dialog add intruction -->
+    <string name="tv_title_1_dialog_add_instruction">Add Instruction</string>
+    <string name="tv_hint_add_urutan_intruction">urutan</string>
+    <string name="tv_add_intruction">Instruction</string>
+
+    <!-- item create -->
+    <string name="tv_name_ingredient_item_create">Ingredients</string>
 
     <!-- Category -->
     <string-array name="programName">
@@ -105,11 +178,8 @@
         <item>@drawable/image_profile</item>
     </string-array>
 
-    <!-- scan-->
-    <string name="camera_x">CameraX</string>
-    <string name="camera">Kamera</string>
-    <string name="gallery">Galeri</string>
-    <string name="upload">Analyze</string>
+
+
     <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
 
     <string-array name="foodNutrion">
@@ -119,17 +189,12 @@
         <item>Rich in Fiber</item>
     </string-array>
 
-    <string name="tab_text_1">Home</string>
-    <string name="tab_text_2">Profile</string>
+
     <string name="tab_text_3">Setting</string>
     <string name="content_tab_home">Welcome Home</string>
     <string name="content_tab_profile">Change your Profile here</string>
     <string name="content_tab_text">This is Tab %1$d</string>
 
-
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 
 
 </resources>

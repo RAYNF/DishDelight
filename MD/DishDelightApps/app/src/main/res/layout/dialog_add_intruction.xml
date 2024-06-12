@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/poppinsbold"
-        android:text="Add Instruction"
+        android:text="@string/tv_title_1_dialog_add_instruction"
         android:textSize="20sp" />
 
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:autofillHints=""
-            android:hint="urutan"
+            android:hint="@string/tv_hint_add_urutan_intruction"
             android:inputType="textShortMessage"
             android:padding="8dp" />
 
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:autofillHints=""
-            android:hint="Instruction"
+            android:hint="@string/tv_add_intruction"
             android:inputType="textMultiLine"
             android:lines="3"
             android:padding="8dp" />
@@ -51,6 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Dark"
-        android:text="Add" />
+        android:text="@string/button_add_dashboard" />
 
 </LinearLayout>

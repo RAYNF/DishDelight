@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="Hello"
+            android:text="@string/title_1_home"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/img_profile"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="Dinusian"
+            android:text="@string/tv_name_home"
             android:textColor="@color/Dark"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/title1"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="What do you want to cook ?"
+            android:text="@string/title_2_home"
             android:textColor="@color/Muted"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/img_profile"
@@ -83,48 +83,6 @@
             app:layout_constraintStart_toEndOf="@id/btn_logout"
             app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal3" />
 
-        <!-- search view sementara pakai ini    -->
-
-        <!--                <LinearLayout-->
-        <!--                    android:id="@+id/search_bar"-->
-        <!--                    android:layout_width="0dp"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:background="@drawable/background_search"-->
-        <!--                    android:gravity="center_vertical"-->
-        <!--                    android:orientation="horizontal"-->
-        <!--                    app:layout_constraintEnd_toEndOf="@id/guideline7"-->
-        <!--                    app:layout_constraintStart_toStartOf="@id/guideline3"-->
-        <!--                    app:layout_constraintTop_toTopOf="parent"-->
-        <!--                    android:layout_marginTop="120dp"-->
-        <!--                    >-->
-
-        <!--                    <ImageButton-->
-        <!--                        android:id="@+id/btn_search"-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:background="@android:color/transparent"-->
-        <!--                        android:padding="8dp"-->
-        <!--                        android:src="@drawable/ic_search" />-->
-
-        <!--                    <EditText-->
-        <!--                        android:id="@+id/searchEditText"-->
-        <!--                        android:layout_width="0dp"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_weight="1"-->
-        <!--                        android:background="@android:color/transparent"-->
-        <!--                        android:focusable="true"-->
-        <!--                        android:hint="@string/searchbar_hint"-->
-        <!--                        android:paddingStart="8dp"-->
-        <!--                        android:paddingEnd="8dp"-->
-        <!--                        android:textColorHint="@color/Muted"-->
-        <!--                        android:textSize="14sp" />-->
-
-
-        <!--                </LinearLayout>-->
-        <!-- batas akhir search view   -->
-
-        <!--  search view seharus nya cuman masih error  -->
-
         <com.google.android.material.search.SearchBar
             android:id="@+id/searchBar"
             style="@style/customSearchbar"
@@ -140,24 +98,6 @@
 
         </com.google.android.material.search.SearchBar>
 
-<!--        <com.google.android.material.search.SearchView-->
-<!--            android:id="@+id/searchView"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:hint="@string/searchbar_hint"-->
-<!--            app:layout_anchor="@id/searchBar"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        </com.google.android.material.search.SearchView>-->
-
-
-
-
-
-        <!--  batas search view seharus nya cuman masih error  -->
 
         <ImageButton
             android:id="@+id/btn_scan"
@@ -171,29 +111,6 @@
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!--    <TextView-->
-        <!--        android:id="@+id/title1"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:fontFamily="@font/poppinsbold"-->
-        <!--        android:text="Login"-->
-        <!--        android:textColor="@color/black"-->
-        <!--        android:textSize="50sp"-->
-        <!--        app:layout_constraintStart_toStartOf="@id/guideline2"-->
-        <!--        app:layout_constraintTop_toBottomOf="@id/guideline1" />-->
-
-        <!--    <TextView-->
-        <!--        android:id="@+id/title2"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:fontFamily="@font/poppinsmedium"-->
-        <!--        android:text="Sign in to continue"-->
-        <!--        android:textColor="@color/black"-->
-        <!--        android:textSize="17sp"-->
-        <!--        app:layout_constraintStart_toStartOf="@id/guideline3"-->
-        <!--        app:layout_constraintTop_toBottomOf="@id/title1" />-->
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layar2"
             android:layout_width="match_parent"
@@ -204,9 +121,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline4">
 
-
             <androidx.cardview.widget.CardView
-                android:id="@+id/higlight_food"
+                android:id="@+id/higlight_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:cardCornerRadius="8dp"
@@ -224,13 +140,12 @@
                         android:layout_height="wrap_content">
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/img_program"
+                            android:id="@+id/img_highlight_recipe"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
                             android:src="@drawable/image_boarding"
                             app:shapeAppearanceOverlay="@style/RoundedImageView" />
-
 
                         <TextView
                             android:id="@+id/tv_name_higlight"
@@ -240,7 +155,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppinsbold"
-                            android:text="Siomay Street Food"
+                            android:text="@string/tv_name_recipe_hiighlight_home"
                             android:textColor="@color/Dark"
                             android:textSize="20sp" />
 
@@ -250,24 +165,17 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!--            <androidx.recyclerview.widget.RecyclerView-->
-            <!--                android:id="@+id/rvProgram"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="210dp"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/title3" />-->
-
             <TextView
                 android:id="@+id/title4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsbold"
                 android:layout_marginTop="20dp"
-                android:text="Category"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/tv_category_home"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/higlight_food" />
+                app:layout_constraintTop_toBottomOf="@id/higlight_recipe" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategory"
@@ -282,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppinsbold"
-                android:text="Popular Recipes"
+                android:text="@string/tv_popular_recipe_home"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -296,38 +204,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title5" />
 
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="110dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="83dp" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="89dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineHorizontal9"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.12"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineHorizontal3"
@@ -337,13 +214,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_percent="0.04"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="126dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -358,7 +228,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="209dp" />
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"

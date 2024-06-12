@@ -6,12 +6,12 @@
     android:layout_marginLeft="5dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
-    android:background="@drawable/background_button_category"
+    android:background="@drawable/background_button_create"
     android:orientation="horizontal"
     android:padding="16dp">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/img_program"
+        android:id="@+id/img_highlight_recipe"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="10dp"
@@ -21,9 +21,12 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:maxLines="2"
+        android:lines="2"
+        android:textAlignment="center"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/poppinsbold"
         android:text="Ingredients"
@@ -38,7 +41,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
-
 
         <TextView
             android:id="@+id/title2"
