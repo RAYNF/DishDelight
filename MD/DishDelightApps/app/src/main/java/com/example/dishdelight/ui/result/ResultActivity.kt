@@ -16,6 +16,7 @@ import com.example.dishdelight.Adapter.AdapterCategorizeNutrionValueActivityResu
 import com.example.dishdelight.data.dataclass.DataClassCategorizeNutrionValueActivityResult
 import com.example.dishdelight.Adapter.AdapterRelatedRecipeActivityResult
 import com.example.dishdelight.data.dataclass.DataClassRelatedRecipeActivityResult
+import com.example.dishdelight.ui.scan.ScanActivity
 
 
 class ResultActivity : AppCompatActivity() {
@@ -35,6 +36,23 @@ class ResultActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+
+        binding.btnDetailRecipe.setOnClickListener {
+            val intent = Intent(this, DetailRecipeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnClose.setOnClickListener {
+            val intent =Intent(this@ResultActivity,ScanActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnFavorit.setOnClickListener {
+            
         }
 
         binding.rvCategory.setHasFixedSize(true)
@@ -58,11 +76,6 @@ class ResultActivity : AppCompatActivity() {
         dataClassRelatedRecipeActivityResultList.addAll(getFoodRelatedData())
         showRecyclerRelated()
 
-        binding.btnDetailRecipe.setOnClickListener {
-            val intent = Intent(this, DetailRecipeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
     private fun getFoodCategoryData(): ArrayList<DataClassCategorizeNutrionValueActivityResult> {

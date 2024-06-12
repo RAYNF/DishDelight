@@ -1,5 +1,6 @@
 package com.example.dishdelight.ui.detailrecipe
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,7 @@ import com.example.dishdelight.databinding.ActivityDetailRecipeBinding
 import com.example.dishdelight.Adapter.AdapterDetailNutritionRecipeActivityDetailRecipe
 import com.example.dishdelight.Adapter.SectionPagerAdapterActivityDetailRecipe
 import com.example.dishdelight.data.dataclass.DataClassDetailNutrionRecipeActivityDetailRecipe
+import com.example.dishdelight.ui.main.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -44,6 +46,11 @@ class DetailRecipeActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.btnClose.setOnClickListener {
+            val intent = Intent(this@DetailRecipeActivity,MainActivity::class.java)
+            startActivity(intent)
         }
 
         binding.rvNutrion.setHasFixedSize(true)

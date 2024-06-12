@@ -1,6 +1,7 @@
 package com.example.dishdelight.ui.home.fragmentsearch
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,11 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dishdelight.Adapter.AdapterSearchResultRecipeFragmentSearch
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentSearchBinding
 import com.example.dishdelight.data.dataclass.DataClassRecipePopularFragmentHome
+import com.example.dishdelight.ui.home.HomeFragment
 
 
 class SearchFragment : Fragment() {
@@ -32,6 +36,7 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater,container,false)
         val root: View = binding.root
 
+        //search view
         with(binding){
             searchView.setupWithSearchBar(searchBar)
             searchView
@@ -40,9 +45,13 @@ class SearchFragment : Fragment() {
                     searchBar.setText(searchView.text)
                     searchView.hide()
                     Toast.makeText(requireActivity(),searchView.text,Toast.LENGTH_SHORT).show()
-//                    updateSearchResults(binding.searchView.text.toString())
                     false
                 }
+        }
+
+        //button back
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_searchFragment_to_navigation_home)
         }
 
         //rvSearch

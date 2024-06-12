@@ -144,6 +144,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:clickable="true"
                             android:src="@drawable/image_boarding"
                             app:shapeAppearanceOverlay="@style/RoundedImageView" />
 

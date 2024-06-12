@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.DialogAddIngredientBinding
@@ -44,13 +45,6 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.rvIngredient.setHasFixedSize(true)
-        listIngredientsFood.addAll(getFood())
-        showRecyclerViewFood()
-
-        binding.rvInstruction.setHasFixedSize(true)
-        listIntructionFood.addAll(getInstruction())
-        showRecyclerIntructionFood()
 
         binding.btnAddIngredient.setOnClickListener {
             showAddIngredientDialog()
@@ -59,6 +53,18 @@ class DashboardFragment : Fragment() {
         binding.btnAddIntruction.setOnClickListener {
             showAddIntructionDialog()
         }
+
+        binding.btnSend.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_dashboard_to_navigation_home)
+        }
+
+        binding.rvIngredient.setHasFixedSize(true)
+        listIngredientsFood.addAll(getFood())
+        showRecyclerViewFood()
+
+        binding.rvInstruction.setHasFixedSize(true)
+        listIntructionFood.addAll(getInstruction())
+        showRecyclerIntructionFood()
 
         return root
     }

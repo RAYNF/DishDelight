@@ -19,6 +19,8 @@ import com.example.dishdelight.data.dataclass.DataClassRecipeCategoryFragmentHom
 import com.example.dishdelight.Adapter.AdapterPopularRecipeFragmentHome
 import com.example.dishdelight.data.dataclass.DataClassRecipePopularFragmentHome
 import com.example.dishdelight.data.viewmodel.HomeViewModelFragmentHome
+import com.example.dishdelight.ui.detailrecipe.DetailRecipeActivity
+import com.example.dishdelight.ui.login.LoginActivity
 import com.example.dishdelight.ui.scan.ScanActivity
 import com.example.dishdelight.ui.setting.SettingActivity
 
@@ -45,6 +47,37 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
 
+        //btn scan
+        binding.btnScan.setOnClickListener {
+            val intent = Intent(requireActivity(), ScanActivity::class.java)
+            startActivity(intent)
+        }
+
+        //search bar
+        binding.searchBar.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_searchFragment)
+        }
+
+        //btn setting
+        binding.btnSetting.setOnClickListener {
+            val intent = Intent(requireActivity(), SettingActivity::class.java)
+            startActivity(intent)
+        }
+
+        //button log out
+        binding.btnLogout.setOnClickListener {
+            val intent = Intent(requireActivity(),LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        //gambar higliht
+        binding.imgHighlightRecipe.setOnClickListener {
+            val intent = Intent(requireActivity(),DetailRecipeActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
 
         //show rv category
         binding.rvCategory.setHasFixedSize(true)
@@ -55,24 +88,6 @@ class HomeFragment : Fragment() {
         binding.rvPopularFood.setHasFixedSize(true)
         dataClassRecipePopularFragmentHome.addAll(getFood())
         showRecyclerViewFood()
-
-        binding.btnScan.setOnClickListener {
-            val intent = Intent(requireActivity(), ScanActivity::class.java)
-            startActivity(intent)
-        }
-
-
-           binding.searchBar.setOnClickListener {
-              findNavController().navigate(R.id.action_navigation_home_to_searchFragment)
-            }
-
-
-        binding.btnSetting.setOnClickListener {
-            val intent = Intent(requireActivity(), SettingActivity::class.java)
-            startActivity(intent)
-        }
-
-
 
 
         return root
@@ -101,7 +116,7 @@ class HomeFragment : Fragment() {
         binding.rvCategory.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         val listFoodAdapter = AdapterCategoryRecipeFragmentHome(categoryFoodList)
-        Log.d("jumlah list","nilai ${categoryFoodList}")
+        Log.d("jumlah list", "nilai ${categoryFoodList}")
         binding.rvCategory.adapter = listFoodAdapter
     }
 
@@ -114,7 +129,11 @@ class HomeFragment : Fragment() {
 
         val listFood = ArrayList<DataClassRecipePopularFragmentHome>()
         for (i in dataName.indices) {
-            val food = DataClassRecipePopularFragmentHome(dataImg.getResourceId(i, -1), dataName[i], dataPrice[i])
+            val food = DataClassRecipePopularFragmentHome(
+                dataImg.getResourceId(i, -1),
+                dataName[i],
+                dataPrice[i]
+            )
             listFood.add(food)
         }
         Log.d("HomeFragment", "Category list size: ${listFood.size}")
