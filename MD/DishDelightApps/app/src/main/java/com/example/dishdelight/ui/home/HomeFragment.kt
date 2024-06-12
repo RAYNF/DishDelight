@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dishdelight.R
@@ -18,10 +18,6 @@ import com.example.dishdelight.ui.home.listcategory.AdapterCategory
 import com.example.dishdelight.ui.home.listcategory.FoodCategory
 import com.example.dishdelight.ui.home.listpopular.AdapterPopularFood
 import com.example.dishdelight.ui.home.listpopular.PopularFood
-import com.example.dishdelight.ui.home.listprogram.AdapterProgram
-import com.example.dishdelight.ui.home.listprogram.FoodProgram
-import com.example.dishdelight.ui.home.searchresult.AdapterSearchResult
-import com.example.dishdelight.ui.home.searchresult.SearchResult
 import com.example.dishdelight.ui.scan.ScanActivity
 import com.example.dishdelight.ui.setting.SettingActivity
 
@@ -29,22 +25,12 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
-    // data sementara
-    private val ProgramFoodList = ArrayList<FoodProgram>()
 
     private val categoryFoodList = ArrayList<FoodCategory>()
 
     private val popularFood = ArrayList<PopularFood>()
 
-    //data dumy search view
-    private val searchResults = listOf(
-        SearchResult(R.drawable.image_profile, "Siomay Street Food", "Indonesia", "2.4k likes"),
-        SearchResult(R.drawable.image_profile, "Bakso Malang", "Indonesia", "1.5k likes")
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,10 +43,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //Show RV program
-//        binding.rvProgram.setHasFixedSize(true)
-//        ProgramFoodList.addAll(getFoodProgram())
-//        showRecylerProgram()
+
 
         //show rv category
         binding.rvCategory.setHasFixedSize(true)
@@ -77,21 +60,11 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        with(binding){
-            searchView.setupWithSearchBar(searchBar)
-            searchView
-                .editText
-                .setOnEditorActionListener { textView, actionId, event ->
-                    searchBar.setText(searchView.text)
-                    searchView.hide()
-//                    Toast.makeText(requireActivity(),searchView.text,Toast.LENGTH_SHORT).show()
-//                    updateSearchResults(binding.searchView.text.toString())
-                    false
-                }
-        }
 
-//        binding.recyclerViewSearchResults.layoutManager = LinearLayoutManager(requireContext())
-//        binding.recyclerViewSearchResults.adapter = AdapterSearchResult(searchResults)
+           binding.searchBar.setOnClickListener {
+              findNavController().navigate(R.id.action_navigation_home_to_searchFragment)
+            }
+
 
         binding.btnSetting.setOnClickListener {
             val intent = Intent(requireActivity(), SettingActivity::class.java)
@@ -104,43 +77,12 @@ class HomeFragment : Fragment() {
         return root
     }
 
-//    private fun updateSearchResults(query: String) {
-//    val filteredResults = searchResults.filter {
-//        it.name.contains(query,ignoreCase = true)
-//    }
-//        (binding.recyclerViewSearchResults.adapter as AdapterSearchResult).apply {
-//            (searchResults as MutableList).clear()
-//            searchResults.addAll(filteredResults)
-//            notifyDataSetChanged()
-//        }
-//    }
-
     override fun onDestroyView() {
         super.onDestroyView()
 
         _binding = null
     }
 
-    // Category
-    @SuppressLint("Recycle")
-//    private fun getFoodProgram(): ArrayList<FoodProgram> {
-//        val catName = resources.getStringArray(R.array.programName)
-//        val catImg = resources.obtainTypedArray(R.array.programImages)
-//
-//        val listProgram = ArrayList<FoodProgram>()
-//        for (i in catName.indices) {
-//            val food = FoodProgram(catName[i], catImg.getResourceId(i, -1))
-//            listProgram.add(food)
-//        }
-//        return listProgram
-//    }
-
-//    private fun showRecylerProgram() {
-//        binding.rvProgram.layoutManager =
-//            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-//        val listFoodAdapter = AdapterProgram(ProgramFoodList)
-//        binding.rvProgram.adapter = listFoodAdapter
-//    }
 
     private fun getFoodCategory(): ArrayList<FoodCategory> {
         val catName = resources.getStringArray(R.array.categoryName)
