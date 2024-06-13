@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,19 +22,23 @@ import com.example.dishdelight.data.dataclass.DataClassRecipeIngredientsFragment
 import com.example.dishdelight.Adapter.AdapterInstructionRecipeFragmentDashboard
 import com.example.dishdelight.data.dataclass.DataClassRecipeIntructionFragmentDashboard
 import com.example.dishdelight.data.viewmodel.DashboardViewModelFragmentDashboard
+import com.example.dishdelight.utils.getImageUri
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
+    private val binding get() = _binding!!
 
     private val listIngredientsFood = ArrayList<DataClassRecipeIngredientsFragmentDashboard>()
-
-    //blm selesai
     private val listIntructionFood = ArrayList<DataClassRecipeIntructionFragmentDashboard>()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    // Variabel global untuk URI gambar
+    private var currentImageUri: Uri? = null
+    private var currentImageUriIngredients: Uri? = null
+
+    // Variabel global untuk dialogBinding
+    private var dialogBindingIngredient: DialogAddIngredientBinding? = null
+    private var dialogBindingIntruction: DialogAddIntructionBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +50,6 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
 
         binding.btnAddIngredient.setOnClickListener {
             showAddIngredientDialog()
@@ -58,6 +63,14 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_dashboard_to_navigation_home)
         }
 
+        binding.btnGaleri.setOnClickListener {
+            launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
+
+        binding.btnCamera.setOnClickListener {
+            startCamera()
+        }
+
         binding.rvIngredient.setHasFixedSize(true)
         listIngredientsFood.addAll(getFood())
         showRecyclerViewFood()
@@ -69,40 +82,104 @@ class DashboardFragment : Fragment() {
         return root
     }
 
+    private fun startCamera() {
+        currentImageUri = getImageUri(requireActivity())
+        launcherIntentCamera.launch(currentImageUri)
+    }
+
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { isSuccess ->
+        if (isSuccess) {
+            showImage()
+        }
+    }
+
+    private val launcherGalleryIngredient = registerForActivityResult(
+        ActivityResultContracts.PickVisualMedia()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            currentImageUriIngredients = uri
+            showImageIngredient()
+
+        } else {
+            Log.d("Photo Picker", "No media Ingredient selected")
+        }
+    }
+
+    private fun showImageIngredient() {
+        currentImageUriIngredients?.let {
+            dialogBindingIngredient?.imagePreview?.setImageURI(it)
+        }
+    }
+
+    private val launcherGallery = registerForActivityResult(
+        ActivityResultContracts.PickVisualMedia()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            currentImageUri = uri
+            showImage()
+        } else {
+            Log.d("photo picker", "No media selected")
+        }
+    }
+
+    private fun showImage() {
+        currentImageUri?.let {
+            Log.d("Image URI", "showImage: $it")
+            binding.previewImageView.setImageURI(it)
+        }
+    }
+
     private fun showAddIntructionDialog() {
-        val dialogInstructionBinding = DialogAddIntructionBinding.inflate(layoutInflater)
+         dialogBindingIntruction = DialogAddIntructionBinding.inflate(layoutInflater)
         val dialogIntruction = AlertDialog.Builder(requireActivity())
-            .setView(dialogInstructionBinding.root)
+            .setView(dialogBindingIntruction!!.root)
             .create()
 
-        dialogInstructionBinding.btnAdd.setOnClickListener {
+        dialogBindingIntruction!!.btnAdd.setOnClickListener {
 
         }
+
+
 
         dialogIntruction.show()
     }
 
     private fun showAddIngredientDialog() {
-        val dialogBinding = DialogAddIngredientBinding.inflate(layoutInflater)
+        dialogBindingIngredient = DialogAddIngredientBinding.inflate(layoutInflater)
         val dialog = AlertDialog.Builder(requireActivity())
-            .setView(dialogBinding.root)
+            .setView(dialogBindingIngredient!!.root)
             .create()
 
-        var selectedImageUri: Uri? = null
-
-        dialogBinding.btnGallery.setOnClickListener {
-
+        dialogBindingIngredient!!.btnGallery.setOnClickListener {
+            launcherGalleryIngredient.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
-        dialogBinding.btnCamera.setOnClickListener {
-
+        dialogBindingIngredient!!.btnCamera.setOnClickListener {
+          startCameraIngredient()
         }
 
-        dialogBinding.btnAdd.setOnClickListener {
-
+        dialogBindingIngredient!!.btnAdd.setOnClickListener {
+            // Handle the addition of ingredients
         }
 
         dialog.show()
+    }
+
+    private fun startCameraIngredient() {
+        currentImageUriIngredients = getImageUri(requireActivity())
+        launcherIntentCameraIngredient.launch(currentImageUriIngredients)
+
+    }
+
+    private val launcherIntentCameraIngredient = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ){isSucces->
+        if (isSucces){
+            showImageIngredient()
+        }
+
     }
 
     override fun onDestroyView() {
@@ -117,7 +194,9 @@ class DashboardFragment : Fragment() {
 
         val listFood = ArrayList<DataClassRecipeIngredientsFragmentDashboard>()
         for (i in dataName.indices) {
-            val food = DataClassRecipeIngredientsFragmentDashboard(dataImg.getResourceId(i, -1), dataName[i], dataPrice[i])
+            val food = DataClassRecipeIngredientsFragmentDashboard(
+                dataImg.getResourceId(i, -1), dataName[i], dataPrice[i]
+            )
             listFood.add(food)
         }
         Log.d("HomeFragment", "Category list size: ${listFood.size}")
