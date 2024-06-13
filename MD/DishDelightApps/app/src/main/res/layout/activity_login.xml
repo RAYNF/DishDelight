@@ -16,8 +16,11 @@
         android:text="@string/judul_1_login"
         android:textColor="@color/black"
         android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/guideline1" />
+        android:layout_marginLeft="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        />
 
     <TextView
         android:id="@+id/title2"
@@ -27,7 +30,8 @@
         android:text="@string/judul_2_login"
         android:textColor="@color/black"
         android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@id/guideline3"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title1" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -144,7 +148,8 @@
             android:text="@string/tv_dont_have_account_login"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="60dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
@@ -163,42 +168,20 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="83dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="99dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="126dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="118dp" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="279dp" />
+        app:layout_constraintGuide_begin="213dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
