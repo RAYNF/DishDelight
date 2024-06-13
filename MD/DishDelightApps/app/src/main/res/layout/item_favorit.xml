@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="180dp"
-    android:layout_height="200dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
+    android:layout_width="160dp"
+    android:layout_height="210dp"
     android:background="@drawable/background_favorit"
     android:orientation="vertical"
+    android:layout_marginTop="10dp"
     android:padding="16dp">
 
     <LinearLayout
@@ -21,7 +20,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_highlight_recipe"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="90dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/image_profile"
                 app:shapeAppearanceOverlay="@style/RoundedImageView" />
@@ -35,17 +34,17 @@
         </FrameLayout>
     </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:lines="2"
+        android:maxLines="2"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +63,7 @@
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/poppinsbold"
             android:lines="1"
-            android:maxLines="2"
+            android:maxLines="1"
             android:text="4.5"
             android:textColor="@color/white"
             android:textSize="16sp" />

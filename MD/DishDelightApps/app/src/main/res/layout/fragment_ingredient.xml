@@ -8,12 +8,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/title1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppinsbold"
@@ -25,7 +24,7 @@
 
         <TextView
             android:id="@+id/tv_total_ingredient"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/poppinsbold"
@@ -46,7 +45,7 @@
 
         <TextView
             android:id="@+id/title2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppinsbold"
@@ -83,6 +82,8 @@
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:lines="2"
+            android:maxLines="2"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppinsbold"
             android:text="@string/tv_name_description_ingredient"
@@ -94,7 +95,6 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRelatedRecipe"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

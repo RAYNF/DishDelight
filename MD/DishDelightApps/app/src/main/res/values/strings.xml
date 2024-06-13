@@ -43,8 +43,8 @@
     <string name="tv_popular_recipe_home">Popular Recipes</string>
 
     <!-- fragment dashboard -->
-    <string name="button_camera_dashboard">Kamera</string>
-    <string name="button_galeri_dashboard">Galeri</string>
+    <string name="button_camera_dashboard">camera</string>
+    <string name="button_galeri_dashboard">Galery</string>
     <string name="tv_ingredients_dashboard">Ingredients</string>
     <string name="button_add_dashboard">Add</string>
     <string name="tv_intruction_dashboard">Instruction</string>
@@ -90,7 +90,7 @@
 
     <!-- dialog add intruction -->
     <string name="tv_title_1_dialog_add_instruction">Add Instruction</string>
-    <string name="tv_hint_add_urutan_intruction">urutan</string>
+    <string name="tv_hint_add_urutan_intruction">order</string>
     <string name="tv_add_intruction">Instruction</string>
 
     <!-- item create -->
