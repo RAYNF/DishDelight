@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.dishdelight.ui.home.HomeFragment"
+        android:name="com.example.dishdelight.view.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.dishdelight.ui.dashboard.DashboardFragment"
+        android:name="com.example.dishdelight.view.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -27,13 +27,13 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.dishdelight.ui.notifications.NotificationsFragment"
+        android:name="com.example.dishdelight.view.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.dishdelight.ui.home.fragmentsearch.SearchFragment"
+        android:name="com.example.dishdelight.view.home.fragmentsearch.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
 

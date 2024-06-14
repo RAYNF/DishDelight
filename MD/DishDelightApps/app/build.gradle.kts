@@ -56,10 +56,23 @@ dependencies {
     //circle image
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-//    //gant chart
-//    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
     //view pager 2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    //shared preference
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //viewModel
+    implementation("androidx.activity:activity-ktx:1.7.2")
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+
+    //glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
 
 }
