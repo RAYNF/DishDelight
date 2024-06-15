@@ -6,9 +6,9 @@ import datetime
 from extensions import db
 from ..models.auth import UserModel
 
-routes = Blueprint('routes', __name__)
+auth = Blueprint('routes', __name__)
 
-@routes.route('/register', methods=['POST'])
+@auth.route('/register', methods=['POST'])
 def register():
     if request.content_type != 'application/json':
         return jsonify({"error": True, "message": "Content-Type must be application/json"}), 415
@@ -42,7 +42,7 @@ def register():
         db.session.rollback()
         return jsonify({"error": True, "message": str(e)}), 500
 
-@routes.route('/login', methods=['POST'])
+@auth.route('/login', methods=['POST'])
 def login():
     if request.content_type != 'application/json':
         return jsonify({"error": True, "message": "Content-Type must be application/json"}), 415
