@@ -14,17 +14,19 @@ class Favorite(db.Model):
     details = db.relationship("MenuDetails", uselist=False)
     author = db.relationship("MenuAuthor", uselist=False)
 
-    def serialize(self, user_id):
-        tourism = db.session.query(MenuDetails) \
-            .filter_by(user_id=user_id, favorite_id=self.id).first()
+def serialize(self, user_id):
+        favorite_recipe = db.session.query(favorite_recipe) \
+            .filter_by(user_id=user_id, food_id=self.id).first()
         return {
-            "tourism": self,
-            "is_favorite": tourism != None
+            "favorite_recipe": self,
+            "is_favorite": favorite_recipe != None
         }
-    
-    @staticmethod
-    def serialize_list(user_id, tourisms):
-        return [tourism.serialize(user_id) for tourism in tourisms]
+
+class Favorite_Recipe(db.Model):
+    __tablename__ = "favorite_recipe"
+
+    favorites_id = db.Column(db.String(30), db.ForeignKey('favorites.id'), primary_key=True)
+    user_id = db.Column(db.String, primary_key=True)
 
 @dataclass
 class MenuDetails(db.Model):
@@ -45,10 +47,3 @@ class MenuDetails(db.Model):
     def author_name(self):
         author = auth.get_user(uid=self.author_id)
         return author.display_name
-
-@dataclass
-class TourismFavorite(db.Model):
-    __tablename__ = "tourism_favorites"
-
-    tourism_id = db.Column(db.String(30), db.ForeignKey('tourisms.id'), primary_key=True)
-    user_id = db.Column(db.String, primary_key=True)

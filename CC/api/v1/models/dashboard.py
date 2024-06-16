@@ -14,7 +14,7 @@ class Dashboard(db.Model):
     name_recipes: str = db.Column(db.String(100), nullable=False)
     image_url: str = db.Column(db.String, nullable=False)
     category_id: int = db.Column(db.Integer, db.ForeignKey('campaign_categories.id'), nullable=False)
-    details = db.relationship("MenuDetails", uselist=False)
+    details = db.relationship("menu_details.id", uselist=False)
     author = db.relationship("MenuAuthor", uselist=False)
 
     @property

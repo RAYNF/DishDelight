@@ -14,12 +14,14 @@ add_recipe = Blueprint("add_recipe", __name__)
 def create_recipe():
     data = request.form if request.content_type.startswith("multipart/form-data") else request.json
 
-    name_recipes = data.get("name_recipes")
-    description = data.get("description")
-    menu_id = data.get("menu_id")
+    name_recipes    = data.get("name_recipes")
+    description     = data.get("description")
+    ingredients     = data.get("ingredients")
+    instructions    = data.get("instructions")
+    category        = data.get("category")
 
-    if not name_recipes or not description:
-        return {"message": "Name menu and description are required"}, 400
+    if not name_recipes or not description or not ingredients or not instructions or not description or not category:
+        return {"message": "Name menu,description,ingredients,instructions,category are required"}, 400
     
     image = request.files.get("image")
     image_url = None
@@ -30,7 +32,11 @@ def create_recipe():
         
         bucket = get_bucket_storage(getenv("BUCKET_NAME"))
         blob = bucket.blob(f"add_recipe/{image.filename}")
-        
+
         blob.upload_from_file(image)
         blob.make_public()
         image_url = blob.public_url
+
+    add_recipe = Add_Recipe( nama_recipes = name_recipes ,image_url= image_url , description= description, ingredients= ingredients,instructions= instructions,category= category, author_id=request.user.get('user_id'))
+    db.session.add(add_recipe)
+    db.session.commit()
