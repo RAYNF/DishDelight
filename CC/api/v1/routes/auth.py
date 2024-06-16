@@ -6,7 +6,7 @@ import datetime
 from extensions import db
 from ..models.auth import UserModel
 
-auth = Blueprint('routes', __name__)
+auth = Blueprint('auth', __name__)
 
 @auth.route('/register', methods=['POST'])
 def register():
