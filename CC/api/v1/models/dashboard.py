@@ -29,6 +29,8 @@ class MenuDetails(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     author_id = db.Column(db.String, nullable=False)
+    name_recipes: str = db.Column(db.String(100), nullable=False)
+    image_url: str = db.Column(db.String, nullable=False)
     description: str = db.Column(db.Text, nullable=False)
     nutritions: str = db.Column(db.Text, nullable=False)
     ingredients: str = db.Column(db.Text, nullable=False)
@@ -47,3 +49,10 @@ class MenuCategory(db.Model):
 
     id: int = db.Column(db.Integer, primary_key=True)
     name: str = db.Column(db.String(100), unique=True, nullable=False)
+
+@dataclass
+class MenuFavorite(db.Model):
+    __tablename__ = "menu_favorites"
+    
+    menu_id = db.Column(db.String(30), db.ForeignKey('dashboards.id'), primary_key=True)
+    user_id = db.Column(db.String, primary_key=True)
