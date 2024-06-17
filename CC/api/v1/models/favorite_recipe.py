@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from ..models.dashboard import Dashboard
 from ..extensions import db
+from firebase_admin import auth
 
 @dataclass
 class Favorite(db.Model):
