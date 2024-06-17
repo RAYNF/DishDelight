@@ -11,7 +11,7 @@ class Favorite(db.Model):
     id: int = db.Column(db.Integer, primary_key=True)
     name_recipes: str = db.Column(db.String(100), nullable=False)
     image_url: str = db.Column(db.String, nullable=False)
-    details = db.relationship("MenuDetails", uselist=False)
+    details = db.relationship("menu_details", uselist=False)
     author = db.relationship("MenuAuthor", uselist=False)
 
 def serialize(self, user_id):
