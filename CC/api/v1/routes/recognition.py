@@ -8,9 +8,9 @@ from keras.preprocessing.image import img_to_array
 recognition = Blueprint('recognition', __name__)
 
 # Load model
-model = load_model()
+model = load_model('https://storage.googleapis.com/model_dishdelight/model-in-prod/model_trained_20bclass.h5')
 
-clean_labels = pd.read_csv()
+clean_labels = pd.read_csv('https://storage.googleapis.com/model_dishdelight/model-in-prod/data_bersih.csv')
 
 def predict_image_cv(model, image, label_map):
     # Ubah gambar menjadi skala abu-abu
@@ -32,7 +32,7 @@ def predict_image_cv(model, image, label_map):
     # Mendapatkan label dari kelas prediksi
     predicted_label = None
     predicted_menu = None
-    for label, (recipe_name,label) in label_map.items():
+    for label, (recipe_name,class_id) in label_map.items():
         if class_id == predicted_class:
             predicted_label = label
             predicted_menu = recipe_name 
