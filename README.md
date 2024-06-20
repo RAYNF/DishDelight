@@ -24,12 +24,12 @@ because if we don't care about the food we consume, it can certainly affect our 
 
 | Name                       | Student ID  | Path                |
 | -------------------------- | ----------- | ------------------- |
-| [Eristining Sabda Alami](link linkin) | M283D4KX1418  | Machine Learning   |
+| [Eristining Sabda Alami](https://www.linkedin.com/in/eristining-sabda-alami) | M283D4KX1418  | Machine Learning   |
 | [Faiza Al Laily Nasron](https://www.linkedin.com/in/faizaallailynasron) | M283D4KX1624  | Machine Learning   |
 | [Nur Annisaa’ Meiarti Fajrin ](https://www.linkedin.com/in/nur-annisaa-meiarti-fajrin-32b864225) | M200D4KX1933  | Machine Learning   |
 | [Eka Arya Pranata  ](linkedin.com/in/eka-arya-pranata-5a4132300) | C007D4KY0406  | Cloud Computing    |
 | [Nikolas Adi Kurniatmaja Sijabat ](https://www.linkedin.com/in/adinikolas/) | C007D4KY0034  | Cloud Computing    |
-| [Rayhan Noor Fathurachman  ](link linkin) | A007D4KY4370  | Mobile Developer   |
+| [Rayhan Noor Fathurachman  ](https://www.linkedin.com/in/rayhan-noor-fathurachman-908b71276/) | A007D4KY4370  | Mobile Developer   |
 | [Thessa Roxana ](link linkin) | A012D4KX4557  | Mobile Developer   |
 
 ## Resource
