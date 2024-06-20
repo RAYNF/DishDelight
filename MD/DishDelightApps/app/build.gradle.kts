@@ -74,5 +74,6 @@ dependencies {
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
-
+    //rotasi gambar
+    implementation(libs.androidx.exifinterface)
 }
