@@ -1,4 +1,4 @@
-h1 align="center">
+<h1 align="center">
   <br>
     <img src="assets/logoDishDelight.jpeg" alt="DishDelight" width="200">
   <br>
@@ -64,6 +64,7 @@ flask --app main run -p 5000
 │   │   └───d61a902842dc_create_favorite_menu_table.py
 ├───.dockerignore
 ├───.gitignore
+├───CC.md
 ├───Dockerfile
 ├───requirements.txt
 └───run.py
