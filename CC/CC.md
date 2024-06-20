@@ -72,10 +72,10 @@ flask --app main run -p 5000
 ```
 
 ## API Documentation
-The details of the API documentation can be accessed at [here]([https://documenter.getpostman.com/view/2s93sc4spc](https://documenter.getpostman.com/view/36428624/2sA3XTfLhn)).
+The details of the API documentation can be accessed at [here](https://documenter.getpostman.com/view/36428624/2sA3XTfLhn).
 
 ## Cloud Computing Team
 | Name | Student ID | Contact |
 | - | - | - |
-| Eka Arya Pranata | C007D4KY0406  | <a href="linkedin.com/in/eka-arya-pranata-5a4132300"><img src="https://img.shields.io/badge/LinkedIn-0077B5?
-| Nikolas Adi Kurniatmaja Sijabat  | C007D4KY0034  | <a href="https://www.linkedin.com/in/adinikolas/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?
+| Eka Arya Pranata | C007D4KY0406  | <a href="linkedin.com/in/eka-arya-pranata-5a4132300"><img src="https://img.shields.io/badge/LinkedIn-0077B5?/></a> |
+| Nikolas Adi Kurniatmaja Sijabat  | C007D4KY0034  | <a href="https://www.linkedin.com/in/adinikolas/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?/></a> |
