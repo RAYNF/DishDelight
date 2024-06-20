@@ -4,6 +4,8 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -12,6 +14,10 @@ jwt = JWTManager()
 
 def create_app():
     app = Flask(__name__)
+
+    # Load environment variables from .env if exists
+    load_dotenv()
+
     app.config.from_object('app.config.Config')
 
     db.init_app(app)

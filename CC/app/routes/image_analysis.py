@@ -11,7 +11,7 @@ from app.models.favorite_menu import FavoriteMenu
 image_analysis_bp = Blueprint('image_analysis', __name__)
 
 # Load the model once at the start (modify the path to your model)
-MODEL_PATH = 'https://storage.googleapis.com/model_dishdelight/model-in-prod/model_trained_20bclass.h5'
+MODEL_PATH = 'model/model.h5'
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Define the allowed extensions for image upload
@@ -30,7 +30,7 @@ def upload_image():
         return jsonify({'message': 'No selected file'}), 400
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file_path = os.path.join('path_to_save_uploaded_files', filename)  # Modify the path
+        file_path = os.path.join('/uploads', filename)  # Modify the path
         file.save(file_path)
 
         # Process the image and predict
