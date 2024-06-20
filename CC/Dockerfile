@@ -1,9 +1,18 @@
-FROM python:3.11-slim
+# Use the official Python image from Docker Hub
+FROM python:3.9-slim
 
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
+# Set the working directory inside the container
+WORKDIR /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+# Install dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Expose the port that the app runs on
+EXPOSE 5000
+
+# Command to run the application
+CMD ["python", "run.py"]
