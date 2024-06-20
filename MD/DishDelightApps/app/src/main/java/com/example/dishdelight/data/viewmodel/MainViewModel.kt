@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.example.dishdelight.data.api.ApiConfig
 import com.example.dishdelight.data.entity.LoginRequest
 import com.example.dishdelight.data.entity.LoginResponse
+import com.example.dishdelight.data.entity.RecomendationResponse
+import com.example.dishdelight.data.entity.RecommendationsItem
 import com.example.dishdelight.data.entity.RegisterRequest
 import com.example.dishdelight.data.entity.RegisterResponse
 import org.json.JSONObject
@@ -27,6 +29,9 @@ class MainViewModel : ViewModel() {
 
     private val _token = MutableLiveData<String>()
     val token: LiveData<String> = _token
+
+    private val _listRecomendation = MutableLiveData<List<RecommendationsItem>?>()
+    val listRecomendation: LiveData<List<RecommendationsItem>?> = _listRecomendation
 
     fun registerUser(username: String, email: String, password: String) {
         _loading.value = true
@@ -94,6 +99,39 @@ class MainViewModel : ViewModel() {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 _error.value = true
                 Log.d("Cek Api", "koneksi respon login gagal")
+            }
+
+        })
+    }
+
+    fun AllRecomendation(token:String){
+        _loading.value = false
+        val client = ApiConfig.getApiService().getRecomendation("Bearer $token")
+        client.enqueue(object : Callback<RecomendationResponse>{
+            override fun onResponse(
+                call: Call<RecomendationResponse>,
+                response: Response<RecomendationResponse>
+            ) {
+               if (response.isSuccessful){
+                   Log.d("Cek Api", "koneksi respon get all rekomendasi berhasil")
+                   val responseBody = response.body()
+                   if (responseBody != null){
+                       _loading.value = false
+                       _error.value = false
+                       Log.d("Koneksi Api", "rekomendasi aman")
+                       _listRecomendation.value = responseBody.recommendations
+                   }
+               }else{
+                   Log.d("Cek Api", "koneksi respon get all rekomendasi gagal")
+                   _loading.value = false
+                   _message.value = "belum ambil data"
+                   _error.value = true
+               }
+            }
+
+            override fun onFailure(call: Call<RecomendationResponse>, t: Throwable) {
+                Log.d("Cek Api", "respon rekomedasi gagal")
+                _error.value = true
             }
 
         })

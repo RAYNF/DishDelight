@@ -25,3 +25,26 @@ data class LoginRequest(
     val password: String
 )
 
+//rekomendasi menu
+data class RecomendationResponse(
+
+    @field:SerializedName("recommendations")
+    val recommendations: List<RecommendationsItem>
+)
+
+data class RecommendationsItem(
+
+    @field:SerializedName("is_favorite")
+    val isFavorite: Boolean,
+
+    @field:SerializedName("image_url")
+    val imageUrl: String,
+
+    @field:SerializedName("menu_name")
+    val menuName: String,
+
+    @field:SerializedName("menu_rating")
+    val menuRating: Int
+)
+
+
