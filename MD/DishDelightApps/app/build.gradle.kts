@@ -35,6 +35,8 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true
+        buildConfig = true
     }
 }
 
@@ -49,6 +51,8 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.activity)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,4 +80,7 @@ dependencies {
 
     //rotasi gambar
     implementation(libs.androidx.exifinterface)
+
+    //tflite task vision
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
 }

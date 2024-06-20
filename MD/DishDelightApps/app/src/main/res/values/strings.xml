@@ -96,6 +96,9 @@
     <!-- item create -->
     <string name="tv_name_ingredient_item_create">Ingredients</string>
 
+    <!--  tfliteHelper  -->
+    <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+
     <!-- Category -->
     <string-array name="programName">
         <item>Dimsum</item>
