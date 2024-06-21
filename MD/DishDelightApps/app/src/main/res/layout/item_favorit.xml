@@ -26,6 +26,7 @@
                 app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
             <ImageButton
+                android:id="@+id/btn_fav_saved"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
