@@ -126,6 +126,15 @@ class HomeFragment : Fragment() {
         val foodAdapter = AdapterPopularRecipeFragmentHome(rekomendasi)
         Log.d("HomeFragment", "Category list size: ${rekomendasi.size}")
         binding.rvPopularFood.adapter = foodAdapter
+        foodAdapter.setOnItemClickCallback(object : AdapterPopularRecipeFragmentHome.OnItemClickCallback {
+            override fun onItemClicked(menuId: Int) {
+                Log.d("HomeFragment", "onItemClicked id: $menuId")
+                val intent = Intent(requireActivity(), DetailRecipeActivity::class.java)
+                intent.putExtra(DetailRecipeActivity.MENU_ID, menuId)
+                startActivity(intent)
+            }
+
+        })
     }
 
     override fun onDestroyView() {
