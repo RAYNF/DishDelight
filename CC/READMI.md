@@ -18,7 +18,7 @@
 
 ## Architecture
 The architecture of this project can be seen in the image below.
-![Architecture](assets/)
+![Architecture](assets/flowapp.png)
 
 ## Development
 - Clone this repository
