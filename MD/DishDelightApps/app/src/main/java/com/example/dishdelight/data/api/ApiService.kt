@@ -1,5 +1,6 @@
 package com.example.dishdelight.data.api
 
+import com.example.dishdelight.data.entity.DetailResponse
 import com.example.dishdelight.data.entity.LoginRequest
 import com.example.dishdelight.data.entity.LoginResponse
 import com.example.dishdelight.data.entity.RecomendationResponse
@@ -12,6 +13,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -30,4 +32,11 @@ interface ApiService {
     fun getRecomendation(
         @Header("Authorization")token:String
     ):Call<RecomendationResponse>
+
+    @GET("auth/menu/{id}")
+    suspend fun getDetail(
+        @Path("id") id: Int,
+        @Header("Authorization")token:String
+    ): DetailResponse
+
 }
