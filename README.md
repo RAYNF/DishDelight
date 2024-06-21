@@ -30,7 +30,7 @@ because if we don't care about the food we consume, it can certainly affect our 
 | [Eka Arya Pranata  ](linkedin.com/in/eka-arya-pranata-5a4132300) | C007D4KY0406  | Cloud Computing    |
 | [Nikolas Adi Kurniatmaja Sijabat ](https://www.linkedin.com/in/adinikolas/) | C007D4KY0034  | Cloud Computing    |
 | [Rayhan Noor Fathurachman  ](https://www.linkedin.com/in/rayhan-noor-fathurachman-908b71276/) | A007D4KY4370  | Mobile Developer   |
-| [Thessa Roxana ](link linkin) | A012D4KX4557  | Mobile Developer   |
+| [Thessa Roxana ](https://www.linkedin.com/in/thessa-roxana-463a56231/) | A012D4KX4557  | Mobile Developer   |
 
 ## Resource
 - Machine Learning Repository: [ML](https://github.com/RAYNF/DishDelight/tree/52e9face98cd5fd13d6b25bed0e1fb7b5dbf0e2f/ML)
