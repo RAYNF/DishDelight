@@ -77,5 +77,5 @@ The details of the API documentation can be accessed at [here](https://documente
 ## Cloud Computing Team
 | Name | Student ID | Contact |
 | - | - | - |
-| Eka Arya Pranata | C007D4KY0406  | <a href="linkedin.com/in/eka-arya-pranata-5a4132300"><img src="https://img.shields.io/badge/LinkedIn-0077B5?/></a> |
-| Nikolas Adi Kurniatmaja Sijabat  | C007D4KY0034  | <a href="https://www.linkedin.com/in/adinikolas/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?/></a> |
+| Eka Arya Pranata | C007D4KY0406  | [ Linkedin ](linkedin.com/in/eka-arya-pranata-5a4132300)  |
+| Nikolas Adi Kurniatmaja Sijabat  | C007D4KY0034  | [ Linkedin ](https://www.linkedin.com/in/adinikolas/) |
