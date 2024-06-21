@@ -9,15 +9,15 @@
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
-- [Architecture](#architecture)
+- [Flowchart Diagram](#flowchart-diagram)
 - [Development](#development)
 - [Deployment](#deployment)
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentations)
 - [Cloud Computing Team](#cloud-computing-team)
 
-## Architecture
-The architecture of this project can be seen in the image below.
+## Flowchart Diagram
+The Flowchart Diagram of this project can be seen in the image below.
 ![Architecture](assets/flowapp.png)
 
 ## Development
