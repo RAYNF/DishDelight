@@ -64,6 +64,7 @@ class HomeFragment : Fragment() {
             if (user.token != null) {
                 mainViewModel.AllRecomendation(user.token)
                 Log.d("ambil data", "berhasil ambil data")
+                binding.name.text = getFirstPartOfEmail(user.email)
             }
         }
 
@@ -152,6 +153,14 @@ class HomeFragment : Fragment() {
         val listFoodAdapter = AdapterCategoryRecipeFragmentHome(categoryFoodList)
         Log.d("jumlah list", "nilai ${categoryFoodList}")
         binding.rvCategory.adapter = listFoodAdapter
+    }
+
+    private fun getFirstPartOfEmail(email: String, length: Int = 4): String {
+        return if (email.length > length) {
+            email.substring(0, length)
+        } else {
+            email
+        }
     }
 }
 

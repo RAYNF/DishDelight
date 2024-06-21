@@ -21,7 +21,7 @@ import java.lang.IllegalStateException
 class ImageClassifierHelper(
     var threshold: Float = 0.5f,
     var maxResults: Int = 3,
-    val modelName: String = "mobilenet_v1.tflite",
+    val modelName: String = "mobilnet_v2.tflite",
     val context: Context,
     val classifierListener: ClassifierListener?
 ) {
@@ -57,7 +57,7 @@ class ImageClassifierHelper(
         }
 
         val imageProcessor = ImageProcessor.Builder()
-            .add(ResizeOp(224, 224, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
+            .add(ResizeOp(299, 299, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
             .add(CastOp(DataType.UINT8))
             .build()
 
@@ -68,8 +68,8 @@ class ImageClassifierHelper(
         } else {
             MediaStore.Images.Media.getBitmap(context.contentResolver, imageUri)
         }.copy(Bitmap.Config.ARGB_8888, true)?.let { bitmap ->
-//            tensorImage = TensorImage.fromBitmap(bitmap)
-            tensorImage = imageProcessor.process(TensorImage.fromBitmap(bitmap))
+            tensorImage = TensorImage.fromBitmap(bitmap)
+//            tensorImage = imageProcessor.process(TensorImage.fromBitmap(bitmap))
         }
 
 
