@@ -1,8 +1,8 @@
 package com.example.dishdelight.di
 
 import android.content.Context
-import com.example.dishdelight.data.pref.UserPreference
-import com.example.dishdelight.data.pref.dataStore
+import com.example.dishdelight.data.local.pref.UserPreference
+import com.example.dishdelight.data.local.pref.dataStore
 import com.example.dishdelight.data.repository.UserRepository
 
 object Injection {

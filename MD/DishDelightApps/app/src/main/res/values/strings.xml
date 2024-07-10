@@ -69,7 +69,7 @@
 
     <!-- activity result -->
     <string name="tv_nutrion_values_result">Nutrion values</string>
-    <string name="tv_related_recipes_result">Related Recipes</string>
+    <string name="tv_related_recipes_result">Another Recipes</string>
 
     <!-- activity detail -->
     <string name="tv_description_detail_recipe">Siomay is one of the best delicious street food where almost liked</string>
@@ -185,12 +185,6 @@
 
     <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
 
-    <string-array name="foodNutrion">
-        <item>Rich in karbohidrat</item>
-        <item>Rich in Protein</item>
-        <item>Rich in Fat</item>
-        <item>Rich in Fiber</item>
-    </string-array>
 
 
 

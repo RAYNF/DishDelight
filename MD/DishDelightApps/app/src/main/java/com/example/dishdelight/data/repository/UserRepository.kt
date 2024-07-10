@@ -1,7 +1,7 @@
 package com.example.dishdelight.data.repository
 
-import com.example.dishdelight.data.pref.UserModel
-import com.example.dishdelight.data.pref.UserPreference
+import com.example.dishdelight.data.local.pref.UserModel
+import com.example.dishdelight.data.local.pref.UserPreference
 import kotlinx.coroutines.flow.Flow
 
 class UserRepository private constructor(private val userPreference: UserPreference) {

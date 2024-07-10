@@ -1,7 +1,9 @@
 package com.example.dishdelight.Adapter
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.dishdelight.R
-import com.example.dishdelight.data.entity.RecommendationsItem
+import com.example.dishdelight.data.remote.entity.RecommendationsItem
+import com.example.dishdelight.view.detailrecipe.DetailRecipeActivity
 
 
 class AdapterPopularRecipeFragmentHome(private val listCategory: List<RecommendationsItem>) :
@@ -38,10 +41,22 @@ class AdapterPopularRecipeFragmentHome(private val listCategory: List<Recommenda
             .into(holder.categoryImg)
 
         holder.categoryTxt.text = item.menuName
+        holder.ratingTXT.text = item.menuRating.toString()
 
-        // the id doesn't exist in the model
+
+
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(position+1)
+                Log.d("posisi",position.toString())
+//            onItemClickCallback.onItemClicked(position+1)
+//            onItemClickCallback.onItemClicked(reversePosition)
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION){
+                val reversePosition = itemCount - position
+
+                val intent = Intent(holder.itemView.context,DetailRecipeActivity::class.java)
+                intent.putExtra("ID_MENU",reversePosition)
+                holder.itemView.context.startActivity(intent)
+            }
         }
 
         if (item.isFavorite)
@@ -58,16 +73,17 @@ class AdapterPopularRecipeFragmentHome(private val listCategory: List<Recommenda
         val categoryImg: ImageView = itemView.findViewById(R.id.img_highlight_recipe)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
         val btnFav: ImageButton = itemView.findViewById(R.id.btn_fav)
+        val ratingTXT : TextView = itemView.findViewById(R.id.tv_rating)
     }
 
     interface OnItemClickCallback {
         fun onItemClicked(menuId: Int)
     }
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
+//    private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
+//    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+//        this.onItemClickCallback = onItemClickCallback
+//    }
 }
 

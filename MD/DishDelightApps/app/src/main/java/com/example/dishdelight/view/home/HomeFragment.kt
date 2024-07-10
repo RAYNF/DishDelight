@@ -13,13 +13,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentHomeBinding
 import com.example.dishdelight.Adapter.AdapterCategoryRecipeFragmentHome
 import com.example.dishdelight.data.dataclass.DataClassRecipeCategoryFragmentHome
 import com.example.dishdelight.Adapter.AdapterPopularRecipeFragmentHome
 import com.example.dishdelight.data.dataclass.DataClassRecipePopularFragmentHome
-import com.example.dishdelight.data.entity.RecommendationsItem
+import com.example.dishdelight.data.remote.entity.RecommendationsItem
 import com.example.dishdelight.data.viewmodel.HomeViewModelFragmentHome
 import com.example.dishdelight.data.viewmodel.MainViewModel
 import com.example.dishdelight.factory.ViewModelFactory
@@ -28,7 +30,10 @@ import com.example.dishdelight.data.viewmodel.MainViewModelMain
 import com.example.dishdelight.view.login.LoginActivity
 import com.example.dishdelight.view.scan.ScanActivity
 import com.example.dishdelight.view.setting.SettingActivity
+import kotlin.random.Random
 
+
+//homefragment kurang category karena api tidak ada
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -37,27 +42,22 @@ class HomeFragment : Fragment() {
 
     private val categoryFoodList = ArrayList<DataClassRecipeCategoryFragmentHome>()
 
-//    private val dataClassRecipePopularFragmentHome = ArrayList<DataClassRecipePopularFragmentHome>()
-
     private val viewModel by viewModels<MainViewModelMain> {
         ViewModelFactory.getInstance(requireActivity())
     }
+
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModelFragmentHome =
-            ViewModelProvider(this).get(HomeViewModelFragmentHome::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val mainViewModel =
-            ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(
-                MainViewModel::class.java
-            )
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         viewModel.getSession().observe(requireActivity()) { user ->
             Log.d("saved token", "ini token yang kesimpen: ${user.token}")
@@ -91,11 +91,13 @@ class HomeFragment : Fragment() {
             viewModel.logout()
         }
 
-        //gambar higliht
-        binding.imgHighlightRecipe.setOnClickListener {
-            val intent = Intent(requireActivity(), DetailRecipeActivity::class.java)
-            startActivity(intent)
-        }
+        val requestOptions = RequestOptions()
+            .error(R.drawable.image_user)
+        //foto profil
+        Glide.with(requireActivity())
+            .load("https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png")
+            .apply(requestOptions)
+            .into(binding.imgProfile)
 
 
         //show rv category
@@ -111,13 +113,10 @@ class HomeFragment : Fragment() {
             Log.d("ambil data", "berhasil mengambil kumbulan data rekomendasi")
             if (it != null) {
                 setData(it)
+
+                displayRandomFoodHighlight(it)
             }
         }
-
-
-//        dataClassRecipePopularFragmentHome.addAll(getFood())
-//        showRecyclerViewFood()
-
 
         return root
     }
@@ -126,15 +125,43 @@ class HomeFragment : Fragment() {
         val foodAdapter = AdapterPopularRecipeFragmentHome(rekomendasi)
         Log.d("HomeFragment", "Category list size: ${rekomendasi.size}")
         binding.rvPopularFood.adapter = foodAdapter
-        foodAdapter.setOnItemClickCallback(object : AdapterPopularRecipeFragmentHome.OnItemClickCallback {
-            override fun onItemClicked(menuId: Int) {
-                Log.d("HomeFragment", "onItemClicked id: $menuId")
-                val intent = Intent(requireActivity(), DetailRecipeActivity::class.java)
-                intent.putExtra(DetailRecipeActivity.MENU_ID, menuId)
+
+//        foodAdapter.setOnItemClickCallback(object : AdapterPopularRecipeFragmentHome.OnItemClickCallback {
+//            override fun onItemClicked(menuId: Int) {
+//                Log.d("HomeFragment", "onItemClicked id: $menuId")
+//                val intent = Intent(requireActivity(), DetailRecipeActivity::class.java)
+//                intent.putExtra(DetailRecipeActivity.MENU_ID, menuId)
+//                startActivity(intent)
+//            }
+//
+//        })
+    }
+
+    private fun displayRandomFoodHighlight(rekomendasi: List<RecommendationsItem>) {
+        if (rekomendasi.isNotEmpty()) {
+            val randomIndex = Random.nextInt(rekomendasi.size)
+            val randomFood = rekomendasi[randomIndex]
+            val reversePosition = rekomendasi.size - randomIndex
+
+            binding.tvNameHiglight.text = randomFood.menuName
+            val requestOptions = RequestOptions()
+                .error(R.drawable.image_siomay)
+
+            Glide.with(requireActivity())
+                .load(randomFood.imageUrl)
+                .apply(requestOptions)
+                .into(binding.imgHighlightRecipe)
+
+            binding.imgHighlightRecipe.setOnClickListener {
+                Log.d("id menu",randomIndex.toString())
+                val intent = Intent(requireActivity(), DetailRecipeActivity::class.java).apply {
+                    putExtra("ID_MENU",reversePosition)
+                }
                 startActivity(intent)
             }
-
-        })
+        } else {
+            binding.tvNameHiglight.text = "Tidak ada rekomendasi"
+        }
     }
 
     override fun onDestroyView() {
@@ -172,25 +199,5 @@ class HomeFragment : Fragment() {
         }
     }
 }
-
-    //Food
-//    @SuppressLint("Recycle")
-//    private fun getFood(): ArrayList<DataClassRecipePopularFragmentHome> {
-//        val dataImg = resources.obtainTypedArray(R.array.foodImages)
-//        val dataName = resources.getStringArray(R.array.foodName)
-//        val dataPrice = resources.getStringArray(R.array.foodPrice)
-//
-//        val listFood = ArrayList<DataClassRecipePopularFragmentHome>()
-//        for (i in dataName.indices) {
-//            val food = DataClassRecipePopularFragmentHome(
-//                dataImg.getResourceId(i, -1),
-//                dataName[i],
-//                dataPrice[i]
-//            )
-//            listFood.add(food)
-//        }
-//        Log.d("HomeFragment", "Category list size: ${listFood.size}")
-//        return listFood
-//    }
 
 

@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (it == false) {
                     AlertDialog.Builder(this).apply {
                         setTitle("Yeah!")
-                        setMessage("Akun dengan $email sudah jadi nih. Yuk, login dan belajar coding.")
+                        setMessage("Akun dengan $email sudah jadi nih. Yuk, login dan lanjut mencari resep seleramu.")
                         setPositiveButton("Lanjut") { _, _ ->
                             val intent = Intent(context, LoginActivity::class.java)
 //                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

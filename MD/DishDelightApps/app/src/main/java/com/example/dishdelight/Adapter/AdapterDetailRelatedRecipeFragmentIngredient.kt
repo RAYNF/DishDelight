@@ -1,15 +1,24 @@
 package com.example.dishdelight.Adapter
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.dishdelight.R
 import com.example.dishdelight.data.dataclass.DataClassRelatedRecipeActivityResult
+import com.example.dishdelight.data.remote.entity.RecommendationsItem
+import com.example.dishdelight.view.detailrecipe.DetailRecipeActivity
 
-class AdapterDetailRelatedRecipeFragmentIngredient(private val listCategory: ArrayList<DataClassRelatedRecipeActivityResult>): RecyclerView.Adapter<AdapterDetailRelatedRecipeFragmentIngredient.ProgramViewHolder>() {
+class AdapterDetailRelatedRecipeFragmentIngredient(private val listCategory: List<RecommendationsItem>): RecyclerView.Adapter<AdapterDetailRelatedRecipeFragmentIngredient.ProgramViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -19,12 +28,39 @@ class AdapterDetailRelatedRecipeFragmentIngredient(private val listCategory: Arr
     }
 
     override fun onBindViewHolder(holder: ProgramViewHolder, position: Int) {
-        val name = listCategory[position].name
-        val image = listCategory[position].image
-        val description = listCategory[position].dataDescription
+        val item = listCategory[position]
 
-        holder.categoryImg.setImageResource(image)
-        holder.categoryTxt.text = name
+        val requestOptions = RequestOptions()
+            .error(R.drawable.image_siomay)
+
+        Glide.with(holder.itemView.context)
+            .load(item.imageUrl)
+            .apply(requestOptions)
+            .into(holder.categoryImg)
+
+        holder.categoryTxt.text = item.menuName
+        holder.ratingTXT.text = item.menuRating.toString()
+
+
+
+        holder.itemView.setOnClickListener {
+            Log.d("posisi",position.toString())
+//            onItemClickCallback.onItemClicked(position+1)
+//            onItemClickCallback.onItemClicked(reversePosition)
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION){
+                val reversePosition = itemCount - position
+
+                val intent = Intent(holder.itemView.context, DetailRecipeActivity::class.java)
+                intent.putExtra("ID_MENU",reversePosition)
+                holder.itemView.context.startActivity(intent)
+            }
+        }
+
+        if (item.isFavorite)
+            holder.btnFav.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN)
+        else
+            holder.btnFav.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN)
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +70,8 @@ class AdapterDetailRelatedRecipeFragmentIngredient(private val listCategory: Arr
     class ProgramViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val categoryImg: ImageView = itemView.findViewById(R.id.img_highlight_recipe)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
+        val btnFav: ImageButton = itemView.findViewById(R.id.btn_fav)
+        val ratingTXT : TextView = itemView.findViewById(R.id.tv_rating)
     }
 
 }

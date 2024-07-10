@@ -47,9 +47,6 @@ class ScanActivity : AppCompatActivity() {
         }
 
         binding.analyzeButton.setOnClickListener {
-//            val intent = Intent(this, ResultActivity::class.java)
-//            startActivity(intent)
-//            finish()
             analyzeImage()
         }
 
@@ -74,12 +71,17 @@ class ScanActivity : AppCompatActivity() {
                                     it[0].categories.sortedByDescending { it?.score }
                                 val Category = sortedCategoris.firstOrNull()
                                 val displayResult = Category?.let {
-                                    "${it.label} " + NumberFormat.getPercentInstance()
-                                        .format(it.score).trim()
+                                    "${it.label} "
+//                                    + NumberFormat.getPercentInstance()
+//                                        .format(it.score).trim()
                                 } ?: "No categories found"
 
-                               showToast(displayResult)
-                                Log.d("result",displayResult)
+                                val movedWithDataIntent = Intent(this@ScanActivity,ResultActivity::class.java)
+                                movedWithDataIntent.putExtra(ResultActivity.EXTRA_NAME,displayResult)
+                                movedWithDataIntent.putExtra(ResultActivity.EXTRA_PHOTO,currentImageUri)
+                                startActivity(movedWithDataIntent)
+//                               showToast(displayResult)
+//                                Log.d("result",displayResult)
                             } else {
                                 showToast("Terjadi kesalahan")
                             }

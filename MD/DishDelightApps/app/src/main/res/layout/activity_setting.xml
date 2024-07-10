@@ -178,29 +178,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title7" />
 
-    <TextView
-        android:id="@+id/title9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:padding="10dp"
-        android:text="@string/tv_term_setting"
-        android:textColor="@color/Muted"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title8" />
-
-    <ImageButton
-        android:id="@+id/btn_terms"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/ic_arrow_right"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_about_app" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

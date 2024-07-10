@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dishdelight.R
 import com.example.dishdelight.data.dataclass.DataClassRecipeIntructionFragmentDashboard
 
-class AdapterDetaiIIntructionRecipeFragmentIntruction(private val listCategory: ArrayList<DataClassRecipeIntructionFragmentDashboard>) :
+
+class AdapterDetaiIIntructionRecipeFragmentIntruction(private val listIntruction: List<String>) :
     RecyclerView.Adapter<AdapterDetaiIIntructionRecipeFragmentIntruction.ProgramViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -20,15 +21,15 @@ class AdapterDetaiIIntructionRecipeFragmentIntruction(private val listCategory: 
     }
 
     override fun onBindViewHolder(holder: ProgramViewHolder, position: Int) {
-        val name = listCategory[position].name
-        val step = listCategory[position].step
+        val name = listIntruction[position]
+        val step = (position+1).toString()
 
         holder.categoryTxt.text = name
         holder.categoryStep.text = step
     }
 
     override fun getItemCount(): Int {
-        return listCategory.size
+        return listIntruction.size
     }
 
     class ProgramViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

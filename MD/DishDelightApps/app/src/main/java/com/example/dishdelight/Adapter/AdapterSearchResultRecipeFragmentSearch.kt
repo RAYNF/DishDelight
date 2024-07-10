@@ -1,39 +1,62 @@
 package com.example.dishdelight.Adapter
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.dishdelight.R
 import com.example.dishdelight.data.dataclass.DataClassRecipePopularFragmentHome
+import com.example.dishdelight.data.remote.entity.RecommendationsItem
+import com.example.dishdelight.data.remote.entity.SearchResultsItem
+import com.example.dishdelight.view.detailrecipe.DetailRecipeActivity
 
-class AdapterSearchResultRecipeFragmentSearch(private val listCategory: ArrayList<DataClassRecipePopularFragmentHome>): RecyclerView.Adapter<AdapterSearchResultRecipeFragmentSearch.ProgramViewHolder>() {
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ProgramViewHolder {
+//karena id tidak ada jadi susah mendapatkan nya
+class AdapterSearchResultRecipeFragmentSearch(private var listCategory: List<SearchResultsItem>) : RecyclerView.Adapter<AdapterSearchResultRecipeFragmentSearch.ProgramViewHolder>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgramViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_popular_food, parent, false)
         return ProgramViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ProgramViewHolder, position: Int) {
-        val name = listCategory[position].name
-        val image = listCategory[position].image
-        val description = listCategory[position].dataDescription
+        val item = listCategory[position]
 
-        holder.categoryImg.setImageResource(image)
-        holder.categoryTxt.text = name
+        val requestOptions = RequestOptions()
+            .error(R.drawable.image_siomay)
+
+        Glide.with(holder.itemView.context)
+            .load(item.imageUrl)
+            .apply(requestOptions)
+            .into(holder.categoryImg)
+
+        holder.categoryTxt.text = item.menuName
+
+        holder.itemView.setOnClickListener {
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                val intent = Intent(holder.itemView.context, DetailRecipeActivity::class.java)
+                intent.putExtra("ID_MENU", position+1)
+                holder.itemView.context.startActivity(intent)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return listCategory.size
     }
 
-    class ProgramViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ProgramViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryImg: ImageView = itemView.findViewById(R.id.img_highlight_recipe)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
     }
-
 }

@@ -21,7 +21,7 @@ import java.lang.IllegalStateException
 class ImageClassifierHelper(
     var threshold: Float = 0.5f,
     var maxResults: Int = 3,
-    val modelName: String = "mobilnet_v2.tflite",
+    val modelName: String = "mobilenet_v2_metadata.tflite",
     val context: Context,
     val classifierListener: ClassifierListener?
 ) {

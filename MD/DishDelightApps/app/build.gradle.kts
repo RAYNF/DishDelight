@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -83,4 +85,8 @@ dependencies {
 
     //tflite task vision
     implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
+
+    //room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.room.compiler)
 }

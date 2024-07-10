@@ -4,19 +4,27 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.dishdelight.data.api.ApiConfig
-import com.example.dishdelight.data.entity.LoginRequest
-import com.example.dishdelight.data.entity.LoginResponse
-import com.example.dishdelight.data.entity.RecomendationResponse
-import com.example.dishdelight.data.entity.RecommendationsItem
-import com.example.dishdelight.data.entity.RegisterRequest
-import com.example.dishdelight.data.entity.RegisterResponse
+import com.example.dishdelight.data.remote.api.ApiConfig
+import com.example.dishdelight.data.remote.entity.DetailResponse
+import com.example.dishdelight.data.remote.entity.LoginRequest
+import com.example.dishdelight.data.remote.entity.LoginResponse
+import com.example.dishdelight.data.remote.entity.MenuDetail
+import com.example.dishdelight.data.remote.entity.RecomendationResponse
+import com.example.dishdelight.data.remote.entity.RecommendationsItem
+import com.example.dishdelight.data.remote.entity.RegisterRequest
+import com.example.dishdelight.data.remote.entity.RegisterResponse
+import com.example.dishdelight.data.remote.entity.SearchResponse
+import com.example.dishdelight.data.remote.entity.SearchResultsItem
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
+
+    companion object {
+        private const val TAG = "MainViewModel"
+    }
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -32,6 +40,12 @@ class MainViewModel : ViewModel() {
 
     private val _listRecomendation = MutableLiveData<List<RecommendationsItem>?>()
     val listRecomendation: LiveData<List<RecommendationsItem>?> = _listRecomendation
+
+    private val _detailRecipe = MutableLiveData<MenuDetail>()
+    val detailRecipe : LiveData<MenuDetail> = _detailRecipe
+
+    private val _listRecomendationSearch = MutableLiveData<List<SearchResultsItem>?>()
+    val listRecomendationSearch: LiveData<List<SearchResultsItem>?> = _listRecomendationSearch
 
     fun registerUser(username: String, email: String, password: String) {
         _loading.value = true
@@ -134,6 +148,79 @@ class MainViewModel : ViewModel() {
                 _error.value = true
             }
 
+        })
+    }
+
+    fun DetailRecipe(id:Int,token: String){
+        _loading.value = false
+        val client = ApiConfig.getApiService().getDetail(id,"Bearer $token")
+        client.enqueue(object :Callback<DetailResponse>{
+            override fun onResponse(
+                call: Call<DetailResponse>,
+                response: Response<DetailResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _loading.value = false
+                        _error.value = false
+                        Log.d("Koneksi Api", "detail RECIPE aman")
+                        _detailRecipe.value = responseBody.menuDetail
+                    }
+                } else {
+
+                    Log.e(
+                        "Koneksi Api", "sudah respon detail stories tapi gagal: ${response.message()}"
+                    )
+                    Log.e("DetailStory", "token: $token")
+                    _loading.value = false
+                    _message.value = "gagal amabil detail"
+                    _error.value = true
+                }
+            }
+
+            override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
+                _loading.value = false
+                Log.d("Cek Api", "detail recipe gagal")
+                _error.value = true
+            }
+
+        })
+
+    }
+
+    fun searchRecipe(token: String,query: String, ) {
+        _loading.value = true
+        val client = ApiConfig.getApiService().searchRecipe("Bearer $token", query)
+        client.enqueue(object : Callback<SearchResponse> {
+            override fun onResponse(
+                call: Call<SearchResponse>,
+                response: Response<SearchResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _loading.value = false
+                    _error.value = false
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _listRecomendationSearch.value = responseBody.searchResults
+                        Log.d("searchRecipe", "Data found: ${responseBody.searchResults}")
+                    } else {
+                        _error.value = true
+                        Log.e("searchRecipe", "Empty response body")
+                    }
+                }
+                else {
+                    _loading.value = false
+                    _error.value = true
+                    Log.e("searchRecipe", "Request failed: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
+                _loading.value = false
+                _error.value = true
+                Log.e("searchRecipe", "Network failure: ${t.message}")
+            }
         })
     }
 

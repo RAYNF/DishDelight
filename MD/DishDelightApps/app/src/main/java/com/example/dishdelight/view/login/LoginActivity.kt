@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.dishdelight.view.main.MainActivity
 import com.example.dishdelight.R
-import com.example.dishdelight.data.pref.UserModel
+import com.example.dishdelight.data.local.pref.UserModel
 import com.example.dishdelight.data.viewmodel.LoginViewModel
 import com.example.dishdelight.data.viewmodel.MainViewModel
 import com.example.dishdelight.databinding.ActivityLoginBinding
@@ -64,11 +64,11 @@ class LoginActivity : AppCompatActivity() {
                 if (it== false){
                     mainViewModel.token.observe(this@LoginActivity){
                         Log.d("token",it)
-                        viewModel.saveSession(UserModel(email, it))
+                        viewModel.saveSession(UserModel(email, it,password))
                     }
                     AlertDialog.Builder(this).apply {
                         setTitle("Yeah!")
-                        setMessage("Anda berhasil Login. Sudah tidak sabar untuk belajar ya?")
+                        setMessage("Anda berhasil Login. Sudah tidak sabar untuk mencari resep selera mu ya?")
                         setPositiveButton("lanjut") { _, _ ->
                             val intent = Intent(context, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
