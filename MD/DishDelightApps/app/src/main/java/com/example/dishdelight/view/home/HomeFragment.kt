@@ -121,10 +121,24 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    //kumpulan resep homepage
     private fun setData(rekomendasi: List<RecommendationsItem>) {
-        val foodAdapter = AdapterPopularRecipeFragmentHome(rekomendasi)
-        Log.d("HomeFragment", "Category list size: ${rekomendasi.size}")
-        binding.rvPopularFood.adapter = foodAdapter
+        viewModel.getSession().observe(requireActivity()) { user ->
+            Log.d("saved token", "ini token yang kesimpen: ${user.token}")
+            if (user.token != null) {
+                val foodAdapter = AdapterPopularRecipeFragmentHome(
+                    rekomendasi,
+                    mainViewModel,
+                    user.token,
+//                    viewLifecycleOwner
+                )
+                Log.d("HomeFragment", "Category list size: ${rekomendasi.size}")
+                binding.rvPopularFood.adapter = foodAdapter
+            }
+        }
+//        val foodAdapter = AdapterPopularRecipeFragmentHome(rekomendasi,mainViewModel,)
+//        Log.d("HomeFragment", "Category list size: ${rekomendasi.size}")
+//        binding.rvPopularFood.adapter = foodAdapter
 
 //        foodAdapter.setOnItemClickCallback(object : AdapterPopularRecipeFragmentHome.OnItemClickCallback {
 //            override fun onItemClicked(menuId: Int) {
@@ -153,9 +167,9 @@ class HomeFragment : Fragment() {
                 .into(binding.imgHighlightRecipe)
 
             binding.imgHighlightRecipe.setOnClickListener {
-                Log.d("id menu",randomIndex.toString())
+                Log.d("id menu", randomIndex.toString())
                 val intent = Intent(requireActivity(), DetailRecipeActivity::class.java).apply {
-                    putExtra("ID_MENU",reversePosition)
+                    putExtra("ID_MENU", reversePosition)
                 }
                 startActivity(intent)
             }

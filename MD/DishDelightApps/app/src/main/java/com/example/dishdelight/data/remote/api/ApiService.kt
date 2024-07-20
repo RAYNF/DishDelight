@@ -1,6 +1,10 @@
 package com.example.dishdelight.data.remote.api
 
+import com.example.dishdelight.data.remote.entity.AddFavoriteResponse
+import com.example.dishdelight.data.remote.entity.AddMenuRequest
+import com.example.dishdelight.data.remote.entity.AddMenuResponse
 import com.example.dishdelight.data.remote.entity.DetailResponse
+import com.example.dishdelight.data.remote.entity.ListFavoriteResponse
 import com.example.dishdelight.data.remote.entity.LoginRequest
 import com.example.dishdelight.data.remote.entity.LoginResponse
 import com.example.dishdelight.data.remote.entity.RecomendationResponse
@@ -46,5 +50,27 @@ interface ApiService {
         @Header("Authorization")token:String,
         @Query("q") query: String
     ):Call<SearchResponse>
+
+
+    //addFavorite
+    @POST("auth/menu/{id}/favorite")
+    fun addFavorite(
+        @Path("id") id: Int,
+        @Header("Authorization")token:String
+    ): Call<AddFavoriteResponse>
+
+    //show listFavorite
+    @GET("auth/favorite_menus")
+    fun getListFavorite(
+        @Header("Authorization")token:String
+    ):Call<ListFavoriteResponse>
+
+
+    //add menu
+    @POST("auth/menu/add")
+    fun addMenu(
+        @Body request: AddMenuRequest,
+        @Header("Authorization")token:String
+    ): Call<AddMenuResponse>
 
 }

@@ -101,3 +101,48 @@ data class SearchResultsItem(
     @field:SerializedName("menu_name")
     val menuName: String
 )
+
+
+//add favorite Menu
+data class AddFavoriteResponse(
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+//list Favorite response
+data class ListFavoriteResponse(
+
+    @field:SerializedName("favorite_menus")
+    val favoriteMenus: List<FavoriteMenusItem>
+)
+
+data class FavoriteMenusItem(
+
+    @field:SerializedName("is_favorite")
+    val isFavorite: Boolean,
+
+    @field:SerializedName("image_url")
+    val imageUrl: String,
+
+    @field:SerializedName("menu_name")
+    val menuName: String,
+
+    @field:SerializedName("menu_rating")
+    val menuRating: Any
+)
+
+//add Menu
+data class AddMenuResponse(
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class AddMenuRequest(
+    val menu_name: String,
+    val image_url: String,
+    val description: String,
+    val ingredients: List<String>,
+    val instructions: List<String>,
+    val category: String
+)

@@ -5,7 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.dishdelight.data.remote.api.ApiConfig
+import com.example.dishdelight.data.remote.entity.AddFavoriteResponse
+import com.example.dishdelight.data.remote.entity.AddMenuRequest
+import com.example.dishdelight.data.remote.entity.AddMenuResponse
 import com.example.dishdelight.data.remote.entity.DetailResponse
+import com.example.dishdelight.data.remote.entity.FavoriteMenusItem
+import com.example.dishdelight.data.remote.entity.ListFavoriteResponse
 import com.example.dishdelight.data.remote.entity.LoginRequest
 import com.example.dishdelight.data.remote.entity.LoginResponse
 import com.example.dishdelight.data.remote.entity.MenuDetail
@@ -42,10 +47,16 @@ class MainViewModel : ViewModel() {
     val listRecomendation: LiveData<List<RecommendationsItem>?> = _listRecomendation
 
     private val _detailRecipe = MutableLiveData<MenuDetail>()
-    val detailRecipe : LiveData<MenuDetail> = _detailRecipe
+    val detailRecipe: LiveData<MenuDetail> = _detailRecipe
 
     private val _listRecomendationSearch = MutableLiveData<List<SearchResultsItem>?>()
     val listRecomendationSearch: LiveData<List<SearchResultsItem>?> = _listRecomendationSearch
+
+    private val _favorite = MutableLiveData<Boolean>()
+    val favorite: LiveData<Boolean> = _favorite
+
+    private val _listFavorite = MutableLiveData<List<FavoriteMenusItem>?>()
+    val listFavorite: LiveData<List<FavoriteMenusItem>?> = _listFavorite
 
     fun registerUser(username: String, email: String, password: String) {
         _loading.value = true
@@ -118,29 +129,29 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    fun AllRecomendation(token:String){
+    fun AllRecomendation(token: String) {
         _loading.value = false
         val client = ApiConfig.getApiService().getRecomendation("Bearer $token")
-        client.enqueue(object : Callback<RecomendationResponse>{
+        client.enqueue(object : Callback<RecomendationResponse> {
             override fun onResponse(
                 call: Call<RecomendationResponse>,
                 response: Response<RecomendationResponse>
             ) {
-               if (response.isSuccessful){
-                   Log.d("Cek Api", "koneksi respon get all rekomendasi berhasil")
-                   val responseBody = response.body()
-                   if (responseBody != null){
-                       _loading.value = false
-                       _error.value = false
-                       Log.d("Koneksi Api", "rekomendasi aman")
-                       _listRecomendation.value = responseBody.recommendations
-                   }
-               }else{
-                   Log.d("Cek Api", "koneksi respon get all rekomendasi gagal")
-                   _loading.value = false
-                   _message.value = "belum ambil data"
-                   _error.value = true
-               }
+                if (response.isSuccessful) {
+                    Log.d("Cek Api", "koneksi respon get all rekomendasi berhasil")
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _loading.value = false
+                        _error.value = false
+                        Log.d("Koneksi Api", "rekomendasi aman")
+                        _listRecomendation.value = responseBody.recommendations
+                    }
+                } else {
+                    Log.d("Cek Api", "koneksi respon get all rekomendasi gagal")
+                    _loading.value = false
+                    _message.value = "belum ambil data"
+                    _error.value = true
+                }
             }
 
             override fun onFailure(call: Call<RecomendationResponse>, t: Throwable) {
@@ -151,10 +162,10 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    fun DetailRecipe(id:Int,token: String){
+    fun DetailRecipe(id: Int, token: String) {
         _loading.value = false
-        val client = ApiConfig.getApiService().getDetail(id,"Bearer $token")
-        client.enqueue(object :Callback<DetailResponse>{
+        val client = ApiConfig.getApiService().getDetail(id, "Bearer $token")
+        client.enqueue(object : Callback<DetailResponse> {
             override fun onResponse(
                 call: Call<DetailResponse>,
                 response: Response<DetailResponse>
@@ -170,7 +181,8 @@ class MainViewModel : ViewModel() {
                 } else {
 
                     Log.e(
-                        "Koneksi Api", "sudah respon detail stories tapi gagal: ${response.message()}"
+                        "Koneksi Api",
+                        "sudah respon detail stories tapi gagal: ${response.message()}"
                     )
                     Log.e("DetailStory", "token: $token")
                     _loading.value = false
@@ -189,7 +201,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun searchRecipe(token: String,query: String, ) {
+    fun searchRecipe(token: String, query: String) {
         _loading.value = true
         val client = ApiConfig.getApiService().searchRecipe("Bearer $token", query)
         client.enqueue(object : Callback<SearchResponse> {
@@ -208,8 +220,7 @@ class MainViewModel : ViewModel() {
                         _error.value = true
                         Log.e("searchRecipe", "Empty response body")
                     }
-                }
-                else {
+                } else {
                     _loading.value = false
                     _error.value = true
                     Log.e("searchRecipe", "Request failed: ${response.message()}")
@@ -221,6 +232,119 @@ class MainViewModel : ViewModel() {
                 _error.value = true
                 Log.e("searchRecipe", "Network failure: ${t.message}")
             }
+        })
+    }
+
+    //addfavorite
+    fun AddFavorite(id: Int, token: String) {
+        _loading.value = false
+        val client = ApiConfig.getApiService().addFavorite(id, "Bearer $token")
+        client.enqueue(object : Callback<AddFavoriteResponse> {
+            override fun onResponse(
+                call: Call<AddFavoriteResponse>,
+                response: Response<AddFavoriteResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _loading.value = false
+                        _error.value = false
+                        _favorite.value = true
+                        Log.d("Koneksi Api", "favorite RECIPE aman")
+                        _message.value = responseBody.message
+                    }
+                } else {
+
+                    Log.e(
+                        "Koneksi Api",
+                        "sudah respon detail stories tapi gagal: ${response.message()}"
+                    )
+                    Log.e("DetailStory", "token: $token")
+                    _loading.value = false
+                    _message.value = "gagal amabil detail"
+                    _error.value = true
+                    _favorite.value = false
+                }
+            }
+
+            override fun onFailure(call: Call<AddFavoriteResponse>, t: Throwable) {
+                _loading.value = false
+                Log.d("Cek Api", "detail recipe gagal")
+                _error.value = true
+                _favorite.value = false
+            }
+
+        })
+
+    }
+
+    fun ListFavorite(token: String) {
+        _loading.value = false
+        val client = ApiConfig.getApiService().getListFavorite("Bearer $token")
+        client.enqueue(object : Callback<ListFavoriteResponse> {
+            override fun onResponse(
+                call: Call<ListFavoriteResponse>,
+                response: Response<ListFavoriteResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("Cek Api", "koneksi respon get all favorite berhasil")
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _loading.value = false
+                        _error.value = false
+                        Log.d("Koneksi Api", "favorite aman")
+                        _listFavorite.value = responseBody.favoriteMenus
+                    }
+                } else {
+                    Log.d("Cek Api", "koneksi respon get all favorite gagal")
+                    _loading.value = false
+                    _message.value = "belum ambil data"
+                    _error.value = true
+                }
+            }
+
+            override fun onFailure(call: Call<ListFavoriteResponse>, t: Throwable) {
+                Log.d("Cek Api", "respon favorite gagal")
+                _error.value = true
+            }
+
+        })
+    }
+
+    fun addMenus(menu_name: String, image_url: String, description: String,ingredient:List<String>,instruction:List<String>,category:String,token: String) {
+        _loading.value = true
+        val menuRequest = AddMenuRequest(menu_name,image_url,description,ingredient,instruction,category)
+        val client = ApiConfig.getApiService().addMenu(menuRequest,"Bearer $token")
+        client.enqueue(object : Callback<AddMenuResponse> {
+            override fun onResponse(
+                call: Call<AddMenuResponse>,
+                response: Response<AddMenuResponse>
+            ) {
+                Log.d("Cek Api", "koneksi respon addMenu berhasil")
+                //error di sini
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _loading.value = false
+                        _message.value = responseBody.message
+                        _error.value = false
+                        Log.d("proses addMenu", response.message())
+                    }
+                } else {
+                    Log.d("proses addMenu", "sudah respon addMenu tapi gagal: ${response.message()}")
+                    val errorBody = response.errorBody()?.string()
+                    val errorMessage = JSONObject(errorBody).getString("message")
+                    _loading.value = false
+                    _message.value = errorMessage
+                    _error.value = true
+                }
+            }
+
+            override fun onFailure(call: Call<AddMenuResponse>, t: Throwable) {
+                _error.value = true
+                Log.e("Koneksi Api", "gagal koneksi addMenu: ${t.message.toString()}")
+            }
+
         })
     }
 

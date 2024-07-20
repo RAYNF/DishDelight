@@ -10,15 +10,23 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.dishdelight.R
 import com.example.dishdelight.data.remote.entity.RecommendationsItem
+import com.example.dishdelight.data.viewmodel.MainViewModel
 import com.example.dishdelight.view.detailrecipe.DetailRecipeActivity
 
 
-class AdapterPopularRecipeFragmentHome(private val listCategory: List<RecommendationsItem>) :
+class AdapterPopularRecipeFragmentHome(
+    private val listCategory: List<RecommendationsItem>,
+    private var mainViewModel: MainViewModel,
+    private var token: String,
+//    private val lifecyleOwner: LifecycleOwner
+) :
     RecyclerView.Adapter<AdapterPopularRecipeFragmentHome.ProgramViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,18 +51,37 @@ class AdapterPopularRecipeFragmentHome(private val listCategory: List<Recommenda
         holder.categoryTxt.text = item.menuName
         holder.ratingTXT.text = item.menuRating.toString()
 
-
-
-        holder.itemView.setOnClickListener {
-                Log.d("posisi",position.toString())
+        holder.btnFav.setOnClickListener {
+            Log.d("posisi", position.toString())
 //            onItemClickCallback.onItemClicked(position+1)
 //            onItemClickCallback.onItemClicked(reversePosition)
             val position = holder.adapterPosition
-            if (position != RecyclerView.NO_POSITION){
+            if (position != RecyclerView.NO_POSITION) {
+                val reversePosition = itemCount - position
+                print(reversePosition)
+                mainViewModel.AddFavorite(reversePosition, token)
+//                mainViewModel.message.observe(lifecyleOwner){
+//                    Toast.makeText(holder.itemView.context,it,Toast.LENGTH_SHORT).show()
+//                }
+
+//                val intent = Intent(holder.itemView.context,DetailRecipeActivity::class.java)
+//                intent.putExtra("ID_MENU",reversePosition)
+//                holder.itemView.context.startActivity(intent)
+            }
+        }
+
+
+
+        holder.itemView.setOnClickListener {
+            Log.d("posisi", position.toString())
+//            onItemClickCallback.onItemClicked(position+1)
+//            onItemClickCallback.onItemClicked(reversePosition)
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
                 val reversePosition = itemCount - position
 
-                val intent = Intent(holder.itemView.context,DetailRecipeActivity::class.java)
-                intent.putExtra("ID_MENU",reversePosition)
+                val intent = Intent(holder.itemView.context, DetailRecipeActivity::class.java)
+                intent.putExtra("ID_MENU", reversePosition)
                 holder.itemView.context.startActivity(intent)
             }
         }
@@ -73,7 +100,7 @@ class AdapterPopularRecipeFragmentHome(private val listCategory: List<Recommenda
         val categoryImg: ImageView = itemView.findViewById(R.id.img_highlight_recipe)
         val categoryTxt: TextView = itemView.findViewById(R.id.tv_name)
         val btnFav: ImageButton = itemView.findViewById(R.id.btn_fav)
-        val ratingTXT : TextView = itemView.findViewById(R.id.tv_rating)
+        val ratingTXT: TextView = itemView.findViewById(R.id.tv_rating)
     }
 
     interface OnItemClickCallback {

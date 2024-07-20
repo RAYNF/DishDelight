@@ -20,7 +20,7 @@ class AdapterCategoryRecipeFragmentHome(private val listCategory: ArrayList<Data
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val name = listCategory[position].name
-        holder.categoryTxt.text = name.toString()
+        holder.categoryTxt.text = name
     }
 
     override fun getItemCount(): Int {

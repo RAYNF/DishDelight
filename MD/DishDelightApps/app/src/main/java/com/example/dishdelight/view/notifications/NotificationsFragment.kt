@@ -6,37 +6,67 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dishdelight.R
 import com.example.dishdelight.databinding.FragmentNotificationsBinding
 import com.example.dishdelight.Adapter.AdapterFavoriteRecipeFragmentNotification
 import com.example.dishdelight.data.dataclass.DataClassFavoriteRecipeFragmentNotification
+import com.example.dishdelight.data.remote.entity.FavoriteMenusItem
+import com.example.dishdelight.data.viewmodel.MainViewModel
+import com.example.dishdelight.data.viewmodel.MainViewModelMain
 import com.example.dishdelight.data.viewmodel.NotificationsViewModelFragmentNotification
+import com.example.dishdelight.factory.ViewModelFactory
 
 class NotificationsFragment : Fragment() {
 
+
     private var _binding: FragmentNotificationsBinding? = null
 
-    private val listDataClassFavoriteRecipeFragmentNotification = ArrayList<DataClassFavoriteRecipeFragmentNotification>()
-
+    private val listDataClassFavoriteRecipeFragmentNotification =
+        ArrayList<DataClassFavoriteRecipeFragmentNotification>()
 
     private val binding get() = _binding!!
+
+    private val viewModel by viewModels<MainViewModelMain> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModelFragmentNotification =
-            ViewModelProvider(this).get(NotificationsViewModelFragmentNotification::class.java)
+//        val notificationsViewModelFragmentNotification =
+//            ViewModelProvider(this).get(NotificationsViewModelFragmentNotification::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            Log.d("saved token", "ini token yang kesimpen: ${user.token}")
+            if (user.token != null) {
+                mainViewModel.ListFavorite(user.token)
+                Log.d("ambil data", "berhasil ambil data")
+            }
+        }
+
         binding.rvFavorit.setHasFixedSize(true)
-        listDataClassFavoriteRecipeFragmentNotification.addAll(getFood())
-        showRecyclerViewFood()
+//        listDataClassFavoriteRecipeFragmentNotification.addAll(getFood())
+//        showRecyclerViewFood()
+        binding.rvFavorit.layoutManager = GridLayoutManager(requireActivity(), 2)
+
+        mainViewModel.listFavorite.observe(viewLifecycleOwner) {
+            Log.d("ambil data", "berhasil mengambil kumbulan data rekomendasi")
+            if (it != null) {
+                showRecyclerViewFood(it)
+            }
+        }
 
 
         return root
@@ -47,27 +77,11 @@ class NotificationsFragment : Fragment() {
         _binding = null
     }
 
-    private fun getFood(): ArrayList<DataClassFavoriteRecipeFragmentNotification> {
-        val dataImg = resources.obtainTypedArray(R.array.foodImages)
-        val dataName = resources.getStringArray(R.array.foodName)
-        val dataPrice = resources.getStringArray(R.array.foodPrice)
+    private fun showRecyclerViewFood(favorit: List<FavoriteMenusItem>) {
+        Log.d("list Favorite food", "Category list size: ${favorit.size}")
 
-        val listFood = ArrayList<DataClassFavoriteRecipeFragmentNotification>()
-        for (i in dataName.indices) {
-            val food = DataClassFavoriteRecipeFragmentNotification(dataImg.getResourceId(i, -1), dataName[i], dataPrice[i])
-            listFood.add(food)
-        }
-        Log.d("notification Fragment", "Category list size: ${listFood.size}")
-        return listFood
+        val foodAdapter = AdapterFavoriteRecipeFragmentNotification(favorit)
 
-    }
-
-    private fun showRecyclerViewFood() {
-        Log.d("list Favorite food", "Category list size: ${listDataClassFavoriteRecipeFragmentNotification.size}")
-        binding.rvFavorit.layoutManager =
-            GridLayoutManager(requireActivity(), 2)
-        val foodAdapter = AdapterFavoriteRecipeFragmentNotification(listDataClassFavoriteRecipeFragmentNotification)
-        Log.d("notification kirim", "Category list size: ${listDataClassFavoriteRecipeFragmentNotification.size}")
         binding.rvFavorit.adapter = foodAdapter
     }
 }
